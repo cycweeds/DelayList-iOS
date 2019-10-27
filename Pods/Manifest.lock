@@ -1,0 +1,49 @@
+PODS:
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - CWLKit (0.2.1)
+  - DeviceKit (2.1.0)
+  - Fabric (1.10.2)
+  - MJRefresh (3.2.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - SwiftyJSON (5.0.0)
+  - XCGLogger (7.0.0):
+    - XCGLogger/Core (= 7.0.0)
+  - XCGLogger/Core (7.0.0):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - Crashlytics
+  - CWLKit
+  - DeviceKit
+  - Fabric
+  - MJRefresh
+  - SwiftyJSON
+  - XCGLogger
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - CWLKit
+    - DeviceKit
+    - Fabric
+    - MJRefresh
+    - ObjcExceptionBridging
+    - SwiftyJSON
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  CWLKit: b9413cb1897d0cd8d88cde08238782bfda27bc67
+  DeviceKit: 2f6c28410d5a5fe2977be7f8cb9b313d28bdae69
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
+
+PODFILE CHECKSUM: 1fdcaf5ac092c83d5a57c5fd7e863ca04c896fc3
+
+COCOAPODS: 1.7.3
