@@ -1,7 +1,0 @@
-${PODS_ROOT}/Target Support Files/Pods-LazyList/Pods-LazyList-frameworks.sh
-${BUILT_PRODUCTS_DIR}/CWLKit/CWLKit.framework
-${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework
-${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
-${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework
-${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
-${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework

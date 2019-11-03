@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LazyList.xcodeproj">
+      location = "group:/Users/cyc/Documents/program/iOS/demo/LazyList/DelayList.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
