@@ -25,20 +25,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
         
-        
+        addNotificationObserver()
         setupRootVC()
+        
         
         
         
         return true
     }
+    
+    func addNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: "receivedLoginSuccess", name: NSNotification.Name.User.LoginSuccess, object: nil)
+        
+         NotificationCenter.default.addObserver(self, selector: "receivedLogout", name: NSNotification.Name.User.Logout, object: nil)
+    }
 
+    
+    var isLogin = false
+    
     func setupRootVC() {
         
-        
-        window?.rootViewController = DLTabbarViewController()
+        if isLogin {
+            window?.rootViewController = DLTabbarViewController()
+        } else {
+            window?.rootViewController = DLLoginViewController()
+        }
     }
     
+    
+    @objc func receivedLogout() {
+        isLogin = false
+        setupRootVC()
+    }
+    
+    @objc func receivedLoginSuccess() {
+        isLogin = true
+        setupRootVC()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     
     func applicationWillResignActive(_ application: UIApplication) {

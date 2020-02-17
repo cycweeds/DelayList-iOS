@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09532CD123BDCEAC00AE0E73 /* DLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09532CCF23BDCEAC00AE0E73 /* DLLoginViewController.swift */; };
+		09532CD223BDCEAC00AE0E73 /* DLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09532CD023BDCEAC00AE0E73 /* DLLoginViewController.xib */; };
+		09532CD423BDD95300AE0E73 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09532CD323BDD95300AE0E73 /* Notification+Extension.swift */; };
+		09532CD823BDFAFA00AE0E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09532CD723BDFAFA00AE0E73 /* UIColor+Extension.swift */; };
 		09901356235780B100285128 /* DLTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901355235780B100285128 /* DLTabbarViewController.swift */; };
 		09901359235780CC00285128 /* DLMeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901358235780CC00285128 /* DLMeHomeViewController.swift */; };
 		0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990135D2357810E00285128 /* DLCircleHomeViewController.swift */; };
@@ -19,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		07BFD924D1717D77EA036B71 /* Pods-DelayList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DelayList.release.xcconfig"; path = "Target Support Files/Pods-DelayList/Pods-DelayList.release.xcconfig"; sourceTree = "<group>"; };
+		09532CCF23BDCEAC00AE0E73 /* DLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLLoginViewController.swift; sourceTree = "<group>"; };
+		09532CD023BDCEAC00AE0E73 /* DLLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLLoginViewController.xib; sourceTree = "<group>"; };
+		09532CD323BDD95300AE0E73 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notification+Extension.swift"; path = "DelayList/Helper/Extension/Notification+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		09532CD723BDFAFA00AE0E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		09901355235780B100285128 /* DLTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTabbarViewController.swift; sourceTree = "<group>"; };
 		09901358235780CC00285128 /* DLMeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLMeHomeViewController.swift; sourceTree = "<group>"; };
 		0990135D2357810E00285128 /* DLCircleHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLCircleHomeViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +54,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09532CCD23BDCE7400AE0E73 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				09532CCF23BDCEAC00AE0E73 /* DLLoginViewController.swift */,
+				09532CD023BDCEAC00AE0E73 /* DLLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		09532CD623BDFADE00AE0E73 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				09532CD323BDD95300AE0E73 /* Notification+Extension.swift */,
+				09532CD723BDFAFA00AE0E73 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		0990134A23577F3600285128 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +101,7 @@
 		0990134D23577F5C00285128 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				09532CD623BDFADE00AE0E73 /* Extension */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -89,6 +116,7 @@
 		0990134F2357803500285128 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				09532CCD23BDCE7400AE0E73 /* Login */,
 				099013532357808600285128 /* Navbar */,
 				099013522357808100285128 /* Tabbar */,
 			);
@@ -271,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09532CD223BDCEAC00AE0E73 /* DLLoginViewController.xib in Resources */,
 				09F50B4823576D4C006201E0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,11 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09532CD123BDCEAC00AE0E73 /* DLLoginViewController.swift in Sources */,
 				09901356235780B100285128 /* DLTabbarViewController.swift in Sources */,
 				09901363235782F600285128 /* DLNavigationController.swift in Sources */,
+				09532CD823BDFAFA00AE0E73 /* UIColor+Extension.swift in Sources */,
 				09F50B4123576D4C006201E0 /* AppDelegate.swift in Sources */,
 				0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */,
 				09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */,
+				09532CD423BDD95300AE0E73 /* Notification+Extension.swift in Sources */,
 				09901359235780CC00285128 /* DLMeHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,7 +491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DVXS97SYN;
-				INFOPLIST_FILE = LazyList/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DelayList/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -479,7 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2DVXS97SYN;
-				INFOPLIST_FILE = LazyList/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DelayList/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
