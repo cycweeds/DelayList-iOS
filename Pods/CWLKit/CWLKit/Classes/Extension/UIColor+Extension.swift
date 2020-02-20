@@ -13,7 +13,7 @@ extension UIColor {
     /// 用字符串初始化
     ///
     /// - Parameters:
-    ///   - hexString: 0x 或者 #开头
+    ///   - hexString: 0x 、 # 开头   + 6位字符串
     ///   - alpha: 透明度
     public convenience init(hexString: String, alpha: CGFloat = 1.0) {
         var formatted = hexString.replacingOccurrences(of: "0x", with: "")
@@ -55,4 +55,14 @@ extension UIColor {
         getRed(nil, green: nil, blue: nil, alpha: &a)
         return a
     }
+    
+    /// SwifterSwift: Hexadecimal value string (read-only).
+     var hexString: String {
+         let components: [Int] = {
+             let comps = cgColor.components!
+             let components = comps.count == 4 ? comps : [comps[0], comps[0], comps[0], comps[1]]
+             return components.map { Int($0 * 255.0) }
+         }()
+         return String(format: "#%02X%02X%02X", components[0], components[1], components[2])
+     }
 }

@@ -15,7 +15,7 @@ class DLTabbarViewController: UITabBarController {
 
         
         
-        let nav1 = DLNavigationController(rootViewController: DLCircleHomeViewController())
+        let nav1 = DLNavigationController(rootViewController: DLTaskGroupViewController())
         nav1.tabBarItem.title = "TODO"
         let nav2 = DLNavigationController(rootViewController: DLCircleHomeViewController())
         nav2.tabBarItem.title = "分享"

@@ -9,6 +9,9 @@
 import UIKit
 
 @_exported import CWLKit
+@_exported import SwiftyJSON
+@_exported import SnapKit
+@_exported import Alamofire
 
 
 
@@ -41,12 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    var isLogin = false
+    var isLogin: Bool {
+        return DLUserManager.shared.isLogin
+    }
     
     func setupRootVC() {
-        
         if isLogin {
-            window?.rootViewController = DLTabbarViewController()
+            window?.rootViewController = DLNavigationController(rootViewController: DLTaskGroupViewController())
         } else {
             window?.rootViewController = DLLoginViewController()
         }
@@ -54,12 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     @objc func receivedLogout() {
-        isLogin = false
+        
         setupRootVC()
     }
     
     @objc func receivedLoginSuccess() {
-        isLogin = true
+        
         setupRootVC()
     }
     

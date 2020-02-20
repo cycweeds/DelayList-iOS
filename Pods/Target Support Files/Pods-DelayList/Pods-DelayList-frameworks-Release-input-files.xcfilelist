@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-DelayList/Pods-DelayList-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CWLKit/CWLKit.framework
 ${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework
 ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework

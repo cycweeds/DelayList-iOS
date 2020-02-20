@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'DelayList' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,7 +10,7 @@ target 'DelayList' do
 
 
 # 项目常用的方法
-pod 'CWLKit'
+pod 'CWLKit', '~> 1.0.2'
 # 用于判断设备
 pod 'DeviceKit'
 # 日志打印
@@ -29,5 +29,7 @@ pod 'MJRefresh'
 # 崩溃统计  https://get.fabric.io/
 pod 'Fabric'
 pod 'Crashlytics'
+
+pod 'Alamofire'
 
 end

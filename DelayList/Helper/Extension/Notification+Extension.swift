@@ -16,4 +16,11 @@ extension Notification.Name {
         static var Logout = Notification.Name.init("User.Logout")
         
     }
+    struct Task {
+           static var TaskUpdate = Notification.Name.init("User.TaskUpdate")
+           
+           
+           
+       }
+    
 }

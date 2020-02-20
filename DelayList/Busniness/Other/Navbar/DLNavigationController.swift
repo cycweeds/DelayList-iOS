@@ -13,18 +13,28 @@ class DLNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        interactivePopGestureRecognizer?.delegate = self
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
-    */
+    
+    override var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+    
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        super.pushViewController(viewController, animated: animated)
+    }
 
+}
+
+extension DLNavigationController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

@@ -11,11 +11,42 @@
 		09532CD223BDCEAC00AE0E73 /* DLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09532CD023BDCEAC00AE0E73 /* DLLoginViewController.xib */; };
 		09532CD423BDD95300AE0E73 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09532CD323BDD95300AE0E73 /* Notification+Extension.swift */; };
 		09532CD823BDFAFA00AE0E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09532CD723BDFAFA00AE0E73 /* UIColor+Extension.swift */; };
+		09804F8723FA762100559862 /* RSHttpConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F6C23FA762100559862 /* RSHttpConfig.swift */; };
+		09804F8823FA762100559862 /* RSResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F6D23FA762100559862 /* RSResult.swift */; };
+		09804F8B23FA762100559862 /* RSHttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F7123FA762100559862 /* RSHttpError.swift */; };
+		09804F8C23FA762100559862 /* RSSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F7223FA762100559862 /* RSSessionManager.swift */; };
+		09804F8D23FA762100559862 /* RSResponese.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F7323FA762100559862 /* RSResponese.swift */; };
+		09804F9B23FA762100559862 /* RSRequestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F8223FA762100559862 /* RSRequestUser.swift */; };
+		09804F9E23FA762100559862 /* RSHttpOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F8523FA762100559862 /* RSHttpOptions.swift */; };
+		09804F9F23FA762100559862 /* RSHTTPRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F8623FA762100559862 /* RSHTTPRequestProtocol.swift */; };
+		09804FA223FA772700559862 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FA123FA772700559862 /* AppConstants.swift */; };
+		09804FA423FA787600559862 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FA323FA787600559862 /* User.swift */; };
+		09804FA623FA971A00559862 /* DLUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FA523FA971A00559862 /* DLUserManager.swift */; };
+		09804FA823FA985200559862 /* DLUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FA723FA985200559862 /* DLUtil.swift */; };
+		09804FAB23FCFBA200559862 /* DLTaskGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FAA23FCFBA200559862 /* DLTaskGroupViewController.swift */; };
+		09804FB323FCFDF100559862 /* DLTaskGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FB123FCFDF100559862 /* DLTaskGroupCell.swift */; };
+		09804FB423FCFDF100559862 /* DLTaskGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09804FB223FCFDF100559862 /* DLTaskGroupCell.xib */; };
+		09804FB623FCFEAC00559862 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FB523FCFEAC00559862 /* Task.swift */; };
+		09804FB823FCFED200559862 /* TaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FB723FCFED200559862 /* TaskGroup.swift */; };
+		09804FBA23FCFF4900559862 /* RSBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FB923FCFF4900559862 /* RSBaseRequest.swift */; };
+		09804FBC23FD002800559862 /* RSRequestTaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FBB23FD002800559862 /* RSRequestTaskGroup.swift */; };
+		09804FBF23FD038900559862 /* DLTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804FBE23FD038900559862 /* DLTaskManager.swift */; };
 		09901356235780B100285128 /* DLTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901355235780B100285128 /* DLTabbarViewController.swift */; };
 		09901359235780CC00285128 /* DLMeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901358235780CC00285128 /* DLMeHomeViewController.swift */; };
 		0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990135D2357810E00285128 /* DLCircleHomeViewController.swift */; };
 		09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901360235782B400285128 /* DLTODOListHomeViewController.swift */; };
 		09901363235782F600285128 /* DLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901362235782F600285128 /* DLNavigationController.swift */; };
+		09A17F1D23FD373A00EE199B /* DLTaskAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A17F1B23FD373A00EE199B /* DLTaskAddViewController.swift */; };
+		09A17F1E23FD373A00EE199B /* DLTaskAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A17F1C23FD373A00EE199B /* DLTaskAddViewController.xib */; };
+		09A17F2023FD3C8C00EE199B /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A17F1F23FD3C8C00EE199B /* CustomPresentationController.swift */; };
+		09A8039523FD71A400F81D89 /* RSRequestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8039423FD71A400F81D89 /* RSRequestTask.swift */; };
+		09A8039723FD7D1D00F81D89 /* DLTaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8039623FD7D1D00F81D89 /* DLTaskListViewController.swift */; };
+		09A8039B23FD7FE800F81D89 /* DLTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8039923FD7FE800F81D89 /* DLTaskCell.swift */; };
+		09A8039C23FD7FE800F81D89 /* DLTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A8039A23FD7FE800F81D89 /* DLTaskCell.xib */; };
+		09A8039E23FE4E0500F81D89 /* DLTaskAddHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8039D23FE4E0500F81D89 /* DLTaskAddHeaderView.swift */; };
+		09A803A023FE4E0E00F81D89 /* DLTaskAddHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A8039F23FE4E0E00F81D89 /* DLTaskAddHeaderView.xib */; };
+		09A803A223FE618800F81D89 /* DLTaskCompletedDivisionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A803A123FE618800F81D89 /* DLTaskCompletedDivisionHeaderView.swift */; };
+		09DC869E23FE878A0013B012 /* DLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC869D23FE878A0013B012 /* DLTaskDetailViewController.swift */; };
 		09F50B4123576D4C006201E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F50B4023576D4C006201E0 /* AppDelegate.swift */; };
 		09F50B4823576D4C006201E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F50B4723576D4C006201E0 /* Assets.xcassets */; };
 		59BFA9CC605C3FBCF20A775A /* Pods_DelayList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD9932313F8A41C901CB38 /* Pods_DelayList.framework */; };
@@ -27,11 +58,42 @@
 		09532CD023BDCEAC00AE0E73 /* DLLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLLoginViewController.xib; sourceTree = "<group>"; };
 		09532CD323BDD95300AE0E73 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Notification+Extension.swift"; path = "DelayList/Helper/Extension/Notification+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		09532CD723BDFAFA00AE0E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		09804F6C23FA762100559862 /* RSHttpConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHttpConfig.swift; sourceTree = "<group>"; };
+		09804F6D23FA762100559862 /* RSResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSResult.swift; sourceTree = "<group>"; };
+		09804F7123FA762100559862 /* RSHttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHttpError.swift; sourceTree = "<group>"; };
+		09804F7223FA762100559862 /* RSSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSessionManager.swift; sourceTree = "<group>"; };
+		09804F7323FA762100559862 /* RSResponese.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSResponese.swift; sourceTree = "<group>"; };
+		09804F8223FA762100559862 /* RSRequestUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSRequestUser.swift; sourceTree = "<group>"; };
+		09804F8523FA762100559862 /* RSHttpOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHttpOptions.swift; sourceTree = "<group>"; };
+		09804F8623FA762100559862 /* RSHTTPRequestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHTTPRequestProtocol.swift; sourceTree = "<group>"; };
+		09804FA123FA772700559862 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		09804FA323FA787600559862 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		09804FA523FA971A00559862 /* DLUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLUserManager.swift; sourceTree = "<group>"; };
+		09804FA723FA985200559862 /* DLUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLUtil.swift; sourceTree = "<group>"; };
+		09804FAA23FCFBA200559862 /* DLTaskGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskGroupViewController.swift; sourceTree = "<group>"; };
+		09804FB123FCFDF100559862 /* DLTaskGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskGroupCell.swift; sourceTree = "<group>"; };
+		09804FB223FCFDF100559862 /* DLTaskGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLTaskGroupCell.xib; sourceTree = "<group>"; };
+		09804FB523FCFEAC00559862 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		09804FB723FCFED200559862 /* TaskGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroup.swift; sourceTree = "<group>"; };
+		09804FB923FCFF4900559862 /* RSBaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSBaseRequest.swift; sourceTree = "<group>"; };
+		09804FBB23FD002800559862 /* RSRequestTaskGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSRequestTaskGroup.swift; sourceTree = "<group>"; };
+		09804FBE23FD038900559862 /* DLTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskManager.swift; sourceTree = "<group>"; };
 		09901355235780B100285128 /* DLTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTabbarViewController.swift; sourceTree = "<group>"; };
 		09901358235780CC00285128 /* DLMeHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLMeHomeViewController.swift; sourceTree = "<group>"; };
 		0990135D2357810E00285128 /* DLCircleHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLCircleHomeViewController.swift; sourceTree = "<group>"; };
 		09901360235782B400285128 /* DLTODOListHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTODOListHomeViewController.swift; sourceTree = "<group>"; };
 		09901362235782F600285128 /* DLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLNavigationController.swift; sourceTree = "<group>"; };
+		09A17F1B23FD373A00EE199B /* DLTaskAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskAddViewController.swift; sourceTree = "<group>"; };
+		09A17F1C23FD373A00EE199B /* DLTaskAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLTaskAddViewController.xib; sourceTree = "<group>"; };
+		09A17F1F23FD3C8C00EE199B /* CustomPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
+		09A8039423FD71A400F81D89 /* RSRequestTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSRequestTask.swift; sourceTree = "<group>"; };
+		09A8039623FD7D1D00F81D89 /* DLTaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskListViewController.swift; sourceTree = "<group>"; };
+		09A8039923FD7FE800F81D89 /* DLTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskCell.swift; sourceTree = "<group>"; };
+		09A8039A23FD7FE800F81D89 /* DLTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLTaskCell.xib; sourceTree = "<group>"; };
+		09A8039D23FE4E0500F81D89 /* DLTaskAddHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskAddHeaderView.swift; sourceTree = "<group>"; };
+		09A8039F23FE4E0E00F81D89 /* DLTaskAddHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLTaskAddHeaderView.xib; sourceTree = "<group>"; };
+		09A803A123FE618800F81D89 /* DLTaskCompletedDivisionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskCompletedDivisionHeaderView.swift; sourceTree = "<group>"; };
+		09DC869D23FE878A0013B012 /* DLTaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskDetailViewController.swift; sourceTree = "<group>"; };
 		09F50B3D23576D4C006201E0 /* DelayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DelayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F50B4023576D4C006201E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09F50B4723576D4C006201E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,9 +134,76 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		09804F6B23FA762100559862 /* HTTPAPI */ = {
+			isa = PBXGroup;
+			children = (
+				09804F6C23FA762100559862 /* RSHttpConfig.swift */,
+				09804F6D23FA762100559862 /* RSResult.swift */,
+				09804F7123FA762100559862 /* RSHttpError.swift */,
+				09804F7223FA762100559862 /* RSSessionManager.swift */,
+				09804F7323FA762100559862 /* RSResponese.swift */,
+				09804F8523FA762100559862 /* RSHttpOptions.swift */,
+				09804F8623FA762100559862 /* RSHTTPRequestProtocol.swift */,
+				09804F7423FA762100559862 /* Request */,
+			);
+			path = HTTPAPI;
+			sourceTree = "<group>";
+		};
+		09804F7423FA762100559862 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				09804FB923FCFF4900559862 /* RSBaseRequest.swift */,
+				09804F8223FA762100559862 /* RSRequestUser.swift */,
+				09804FBB23FD002800559862 /* RSRequestTaskGroup.swift */,
+				09A8039423FD71A400F81D89 /* RSRequestTask.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		09804FA923FCFB7600559862 /* TaskGroup */ = {
+			isa = PBXGroup;
+			children = (
+				09804FAC23FCFD5B00559862 /* View */,
+				09804FAA23FCFBA200559862 /* DLTaskGroupViewController.swift */,
+				09A17F1B23FD373A00EE199B /* DLTaskAddViewController.swift */,
+				09A17F1C23FD373A00EE199B /* DLTaskAddViewController.xib */,
+			);
+			path = TaskGroup;
+			sourceTree = "<group>";
+		};
+		09804FAC23FCFD5B00559862 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09804FB123FCFDF100559862 /* DLTaskGroupCell.swift */,
+				09804FB223FCFDF100559862 /* DLTaskGroupCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09804FBD23FD037A00559862 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				09804FA523FA971A00559862 /* DLUserManager.swift */,
+				09804FBE23FD038900559862 /* DLTaskManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		09804FC423FD2BF400559862 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				09DC869C23FE87710013B012 /* Detail */,
+				09DC869B23FE87670013B012 /* List */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		0990134A23577F3600285128 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09804FA323FA787600559862 /* User.swift */,
+				09804FB723FCFED200559862 /* TaskGroup.swift */,
+				09804FB523FCFEAC00559862 /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -82,6 +211,8 @@
 		0990134B23577F3E00285128 /* Busniness */ = {
 			isa = PBXGroup;
 			children = (
+				09804FC423FD2BF400559862 /* Task */,
+				09804FA923FCFB7600559862 /* TaskGroup */,
 				0990135A235780D200285128 /* Circle */,
 				099013512357807200285128 /* TodoList */,
 				099013502357806000285128 /* Me */,
@@ -101,7 +232,12 @@
 		0990134D23577F5C00285128 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				09A17F1F23FD3C8C00EE199B /* CustomPresentationController.swift */,
+				09804FBD23FD037A00559862 /* Manager */,
+				09804F6B23FA762100559862 /* HTTPAPI */,
 				09532CD623BDFADE00AE0E73 /* Extension */,
+				09804FA123FA772700559862 /* AppConstants.swift */,
+				09804FA723FA985200559862 /* DLUtil.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -187,6 +323,43 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		09A8039823FD7FCA00F81D89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09A8039923FD7FE800F81D89 /* DLTaskCell.swift */,
+				09A8039A23FD7FE800F81D89 /* DLTaskCell.xib */,
+				09A8039D23FE4E0500F81D89 /* DLTaskAddHeaderView.swift */,
+				09A8039F23FE4E0E00F81D89 /* DLTaskAddHeaderView.xib */,
+				09A803A123FE618800F81D89 /* DLTaskCompletedDivisionHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09C67DD923FEC6D900A76DAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09DC869B23FE87670013B012 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				09A8039823FD7FCA00F81D89 /* View */,
+				09A8039623FD7D1D00F81D89 /* DLTaskListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		09DC869C23FE87710013B012 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				09C67DD923FEC6D900A76DAB /* View */,
+				09DC869D23FE878A0013B012 /* DLTaskDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		09F50B3423576D4B006201E0 = {
 			isa = PBXGroup;
 			children = (
@@ -210,11 +383,11 @@
 			children = (
 				0990134E23577F6D00285128 /* UIComponent */,
 				0990134D23577F5C00285128 /* Helper */,
-				0990134C23577F4B00285128 /* Resource */,
-				0990134B23577F3E00285128 /* Busniness */,
 				0990134A23577F3600285128 /* Model */,
+				0990134B23577F3E00285128 /* Busniness */,
 				09F50B4023576D4C006201E0 /* AppDelegate.swift */,
 				09F50B4C23576D4C006201E0 /* Info.plist */,
+				0990134C23577F4B00285128 /* Resource */,
 			);
 			path = DelayList;
 			sourceTree = "<group>";
@@ -299,8 +472,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A8039C23FD7FE800F81D89 /* DLTaskCell.xib in Resources */,
 				09532CD223BDCEAC00AE0E73 /* DLLoginViewController.xib in Resources */,
+				09A803A023FE4E0E00F81D89 /* DLTaskAddHeaderView.xib in Resources */,
 				09F50B4823576D4C006201E0 /* Assets.xcassets in Resources */,
+				09804FB423FCFDF100559862 /* DLTaskGroupCell.xib in Resources */,
+				09A17F1E23FD373A00EE199B /* DLTaskAddViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,15 +530,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09DC869E23FE878A0013B012 /* DLTaskDetailViewController.swift in Sources */,
+				09804FA823FA985200559862 /* DLUtil.swift in Sources */,
+				09804FBC23FD002800559862 /* RSRequestTaskGroup.swift in Sources */,
+				09804FBF23FD038900559862 /* DLTaskManager.swift in Sources */,
+				09804FB323FCFDF100559862 /* DLTaskGroupCell.swift in Sources */,
 				09532CD123BDCEAC00AE0E73 /* DLLoginViewController.swift in Sources */,
+				09804FA623FA971A00559862 /* DLUserManager.swift in Sources */,
+				09804F8B23FA762100559862 /* RSHttpError.swift in Sources */,
+				09804FA223FA772700559862 /* AppConstants.swift in Sources */,
 				09901356235780B100285128 /* DLTabbarViewController.swift in Sources */,
 				09901363235782F600285128 /* DLNavigationController.swift in Sources */,
+				09804F8D23FA762100559862 /* RSResponese.swift in Sources */,
 				09532CD823BDFAFA00AE0E73 /* UIColor+Extension.swift in Sources */,
 				09F50B4123576D4C006201E0 /* AppDelegate.swift in Sources */,
+				09A8039523FD71A400F81D89 /* RSRequestTask.swift in Sources */,
+				09A8039B23FD7FE800F81D89 /* DLTaskCell.swift in Sources */,
+				09804FA423FA787600559862 /* User.swift in Sources */,
+				09A803A223FE618800F81D89 /* DLTaskCompletedDivisionHeaderView.swift in Sources */,
+				09804FAB23FCFBA200559862 /* DLTaskGroupViewController.swift in Sources */,
+				09A17F1D23FD373A00EE199B /* DLTaskAddViewController.swift in Sources */,
+				09804FBA23FCFF4900559862 /* RSBaseRequest.swift in Sources */,
 				0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */,
+				09804FB823FCFED200559862 /* TaskGroup.swift in Sources */,
 				09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */,
+				09804F8823FA762100559862 /* RSResult.swift in Sources */,
+				09804FB623FCFEAC00559862 /* Task.swift in Sources */,
+				09A8039723FD7D1D00F81D89 /* DLTaskListViewController.swift in Sources */,
+				09804F9B23FA762100559862 /* RSRequestUser.swift in Sources */,
+				09A8039E23FE4E0500F81D89 /* DLTaskAddHeaderView.swift in Sources */,
+				09804F9F23FA762100559862 /* RSHTTPRequestProtocol.swift in Sources */,
+				09804F9E23FA762100559862 /* RSHttpOptions.swift in Sources */,
 				09532CD423BDD95300AE0E73 /* Notification+Extension.swift in Sources */,
+				09804F8723FA762100559862 /* RSHttpConfig.swift in Sources */,
 				09901359235780CC00285128 /* DLMeHomeViewController.swift in Sources */,
+				09804F8C23FA762100559862 /* RSSessionManager.swift in Sources */,
+				09A17F2023FD3C8C00EE199B /* CustomPresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

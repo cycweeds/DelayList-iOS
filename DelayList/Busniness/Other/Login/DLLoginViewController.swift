@@ -28,6 +28,8 @@ class DLLoginViewController: UIViewController {
     
     var countDownTimer: Timer?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,28 +61,59 @@ class DLLoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         loginButton.isEnabled = false
         indicatiorView.startAnimating()
-        DispatchQueue.main.cwl_delay(second: 2) {
-            
-                
-            
-                NotificationCenter.default.post(name: NSNotification.Name.User.LoginSuccess, object: nil)
-                self.loginButton.isEnabled = true
-                self.indicatiorView.stopAnimating()
-            
-        }
         
+        guard let code = verificationCodeInputTextField.text else { return }
+        guard let phone = phoneTextField.text else { return }
+        
+        
+        RSSessionManager.rs_request(RSRequestUser.login(verificationCode: code, phone: phone)) { (result) in
+            self.loginButton.isEnabled = true
+            self.indicatiorView.stopAnimating()
+            switch result {
+            case .success(let response):
+                let token = response.data["token"].stringValue
+                
+                DLUserManager.shared.token = token
+                NotificationCenter.default.post(name: NSNotification.Name.User.LoginSuccess, object: nil)
+                              
+            default: break
+                
+            }
+        }
     }
     
     
     @IBAction func fetchVerificationCode() {
         verificationCodeButton.isEnabled = false
-
         
-        if countDownTimer == nil {
-            countDownTimer = Timer(timeInterval: 1, target: self, selector: "startCountDown", userInfo: nil, repeats: true)
-            RunLoop.main.add(countDownTimer!, forMode: RunLoop.Mode.common)
-            countDownTimer?.fire()
+        guard let phone = phoneTextField.text else { return }
+        
+        RSSessionManager.rs_request(RSRequestUser.getVerificationCode(phone: phone)) {  [weak self] (result) in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let response):
+                let code = response.data["code"].stringValue
+                
+                if AppConstants.isDebug() {
+                    strongSelf.verificationCodeInputTextField.text = code
+                }
+                
+                
+                
+                if strongSelf.countDownTimer == nil {
+                           strongSelf.countDownTimer = Timer(timeInterval: 1, target: strongSelf, selector: "startCountDown", userInfo: nil, repeats: true)
+                           RunLoop.main.add(strongSelf.countDownTimer!, forMode: RunLoop.Mode.common)
+                           strongSelf.countDownTimer?.fire()
+                       }
+                
+            default:
+                
+                strongSelf.verificationCodeButton.isEnabled = true
+                
+            }
         }
+
+       
         
     }
     
