@@ -12,7 +12,7 @@ import Foundation
 extension Notification.Name {
     struct User {
         static var LoginSuccess = Notification.Name.init("User.LoginSuccess")
-        
+        static var Update = Notification.Name.init("User.Update")
         static var Logout = Notification.Name.init("User.Logout")
         
     }

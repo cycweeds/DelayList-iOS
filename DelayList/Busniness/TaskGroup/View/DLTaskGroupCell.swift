@@ -28,6 +28,8 @@ class DLTaskGroupCell: UITableViewCell {
             icon.image = UIImage(named: "today")
         case .normal:
             icon.image = UIImage(named: "group")
+        case .important:
+            icon.image = UIImage(named: "important")
         }
         
         if taskGroup.count == 0 {

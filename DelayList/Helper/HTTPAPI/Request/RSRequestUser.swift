@@ -13,17 +13,25 @@ enum RSRequestUser: RSHTTPRequestProtocol {
     case getVerificationCode(phone: String)
     /// 登录
     case login(verificationCode: String, phone: String)
+    /// 获取当前用户
+    case getCurrentUser
+    /// 更新
+    case updateUser(pararms: [String: Any])
     
     
     var url: String {
+        let path: String
         switch self {
         case .getVerificationCode:
-            return kHttpBaseURL + "/user/getVerificationCode"
+            path = "/user/getVerificationCode"
         case .login:
-            return kHttpBaseURL + "/user/login"
-            
-            
+            path = "/user/login"
+        case .updateUser:
+            path = "/user/update"
+        case .getCurrentUser:
+            path = "/user/getCurrent"
         }
+        return kHttpBaseURL + path
     }
     
     var parameters: Parameters? {
@@ -32,15 +40,21 @@ enum RSRequestUser: RSHTTPRequestProtocol {
             return ["phone": phone]
         case .login(let verificationCode, let phone):
             return ["verificationCode": verificationCode, "phone": phone]
+        case .updateUser(let pararms):
+            return pararms
+        default:
+            return nil
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getVerificationCode:
-            return .get
-        default:
+        case .updateUser:
+            return .patch
+        case .login:
             return .post
+        default:
+            return .get
         }
     }
     

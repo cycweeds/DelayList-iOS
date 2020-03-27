@@ -10,20 +10,20 @@ import Foundation
 
 enum RSRequestTask: RSHTTPRequestProtocol {
     case add(params: [String: Any])
-    case update(params: [String: Any])
+    case update(task: Task)
     case changeCompleted(taskId: Int, isComplete: Bool)
     case delete(taskId: Int)
-    case moveToGroup(groupID: Int)
+    case moveToGroup(taskId: Int, groupId: Int)
     case get(groupId: Int?)
-    
+    case getAllImportant
     
     var url: String {
         let taskBaseURL = kHttpBaseURL + "/task"
         switch self {
         case .add:
             return taskBaseURL + "/add"
-        case .update:
-            return taskBaseURL + "/update"
+        case .update(let task):
+            return taskBaseURL + "/update/\(task.id)"
         case .delete:
             return taskBaseURL + "/delete"
         case .moveToGroup:
@@ -32,17 +32,25 @@ enum RSRequestTask: RSHTTPRequestProtocol {
             return taskBaseURL + "/get"
         case .changeCompleted:
             return taskBaseURL + "/completed"
+        case .getAllImportant:
+            return taskBaseURL + "/getAllImportant"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .get:
+        case .get, .getAllImportant:
             return .get
         case .delete:
             return .delete
-        default:
-            return .post
+        case .update:
+            return .put
+        case .add:
+            return .post;
+        case .changeCompleted:
+            return .patch
+        case .moveToGroup:
+            return .patch
         }
     }
     
@@ -55,17 +63,35 @@ enum RSRequestTask: RSHTTPRequestProtocol {
                 return nil
             }
             
-            
         case .add(let params):
             return params
-        case .update(let params):
+        case .update(let task):
+            
+            var params: [String : Any] = ["important": task.isImportant, "title": task.title, "complete": task.isComplete]
+            if let note = task.note {
+                params.updateValue(note, forKey: "note")
+            }
+            
+            if let dueDateTimestamp = task.dueDate?.timeIntervalSince1970 {
+                params.updateValue(Int(dueDateTimestamp) * 1000, forKey: "dueDateTimestamp")
+            }
+            
+            if let contactPhone = task.contactPhone {
+                params.updateValue(contactPhone, forKey: "contactPhone")
+            }
+            
+            
+            
             return params
         case .delete(let taskId):
             return ["taskId": taskId]
-        case .moveToGroup(let groupID):
-            return ["groupID": groupID]
+        case .moveToGroup(let taskId, let groupId):
+            return ["groupId": groupId, "taskId": taskId]
         case .changeCompleted(let taskId, let isComplete):
             return ["isComplete": isComplete, "taskId": taskId]
+            
+        default:
+            return nil
         }
     }
     

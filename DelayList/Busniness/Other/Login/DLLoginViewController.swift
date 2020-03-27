@@ -72,7 +72,9 @@ class DLLoginViewController: UIViewController {
             switch result {
             case .success(let response):
                 let token = response.data["token"].stringValue
-                
+                let user = User(json: response.data["user"])
+                    
+                DLUserManager.shared.currentUser = user
                 DLUserManager.shared.token = token
                 NotificationCenter.default.post(name: NSNotification.Name.User.LoginSuccess, object: nil)
                               

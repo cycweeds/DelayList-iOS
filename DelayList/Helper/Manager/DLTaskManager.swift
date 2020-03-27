@@ -17,15 +17,21 @@ class DLTaskManager {
     }()
     
     let inboxGroup: TaskGroup = {
-         var inboxGroup = TaskGroup()
-         inboxGroup.title = "暂存箱"
-         inboxGroup.type = .inbox
+        var inboxGroup = TaskGroup()
+        inboxGroup.title = "暂存箱"
+        inboxGroup.type = .inbox
+        return inboxGroup
+    }()
+    
+    let importantGroup: TaskGroup = {
+        var inboxGroup = TaskGroup()
+        inboxGroup.title = "重要"
+        inboxGroup.type = .important
         return inboxGroup
     }()
     
     static var shared: DLTaskManager = {
-       let manger = DLTaskManager()
-    
+        let manger = DLTaskManager()
         return manger
     }()
     
@@ -33,6 +39,7 @@ class DLTaskManager {
     
     var task: [Task] = []
     
+    var taskQueue: DispatchQueue = DispatchQueue(label: "task")
     
     func fetchAll(completed: (() -> ())?) {
         RSSessionManager.rs_request(RSRequestTaskGroup.getAll) { (result) in
@@ -48,8 +55,22 @@ class DLTaskManager {
                 fallthrough
             case .error:
                 break
-//                self.fetchAll(completed: completed)
-                
+                //                self.fetchAll(completed: completed)
+            }
+        }
+    }
+    
+    func deleteGroup(_ group: TaskGroup, completed: (() -> ())?) {
+        guard let groupId = group.id else {
+            return
+        }
+        RSSessionManager.rs_request(RSRequestTaskGroup.delete(groupId: groupId)) { (result) in
+            switch result {
+            case .success:
+                self.taskGroups.remove(at: self.taskGroups.firstIndex(where: {$0.id == group.id })!)
+                completed?()
+            default:
+                break
             }
         }
     }
@@ -90,6 +111,13 @@ class DLTaskManager {
                 break
                 
             }
+        }
+    }
+    
+    
+    func updateTask(task: Task) {
+        RSSessionManager.rs_request(RSRequestTask.update(task: task)) { (result) in
+            
         }
     }
     

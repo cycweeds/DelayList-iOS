@@ -13,10 +13,11 @@ enum TaskGroupType: Int {
     case normal
     case today
     case inbox
+    case important
 }
 
 class TaskGroup {
-    var id: Int = 0
+    var id: Int?
     var title = ""
     
     var count = 0
@@ -38,7 +39,7 @@ class TaskGroup {
     }
     
     init(json: JSON) {
-        id = json["id"].intValue
+        id = json["id"].int
         title = json["title"].stringValue
     }
 }

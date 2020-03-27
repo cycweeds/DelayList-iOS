@@ -16,8 +16,8 @@ class DLTaskGroupViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
-        
         tableView.tableFooterView = addGroupFooter
+        
         // register
         tableView.cwl.registerNibCell(class: DLTaskGroupCell.self)
         return tableView
@@ -55,12 +55,29 @@ class DLTaskGroupViewController: UIViewController {
         return footer
     }()
     
+    lazy var groupNavigationBar: DLTaskGroupNavigationBar = {
+        let bar = DLTaskGroupNavigationBar(frame: .zero)
+        bar.userContentTapHandler = { [unowned self] in
+            self.gotoUserSetting()
+        }
+        return bar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(groupNavigationBar)
+        groupNavigationBar.updateUserInfo()
+        groupNavigationBar.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalTo(topLayoutGuide.snp.bottom).offset(60)
+        }
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(groupNavigationBar.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
         }
         view.addSubview(addButton)
         addButton.snp.makeConstraints { (make) in
@@ -72,13 +89,39 @@ class DLTaskGroupViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: "taskUpdate:", name: NSNotification.Name.Task.TaskUpdate, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: "userUpdated", name: NSNotification.Name.User.Update, object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    @objc func gotoUserSetting() {
+        let settingVC = DLUserSettingViewController()
+         let nav = DLNavigationController(rootViewController: settingVC)
+        present(nav, animated: true)
+    }
+    
+    @objc func userUpdated() {
+        groupNavigationBar.updateUserInfo()
+    }
+    
     
     @objc func taskUpdate(_ notification: Notification) {
         guard let task = notification.userInfo?["task"] as? Task else {
             return
         }
-        
         if task.groupId == nil {
             let zeroIndexPath = IndexPath(item: 1, section: 0)
             tableView.reloadRows(at: [zeroIndexPath], with: .none)
@@ -88,7 +131,6 @@ class DLTaskGroupViewController: UIViewController {
                 self.tableView.deselectRow(at: zeroIndexPath, animated: true)
             }
         } else {
-            
             tableView.reloadData()
         }
     }
@@ -101,6 +143,19 @@ class DLTaskGroupViewController: UIViewController {
         DLTaskManager.shared.fetchAll { [weak self]  in
             self?.tableView.reloadData()
         }
+        
+        
+        
+        RSSessionManager.rs_request(RSRequestUser.getCurrentUser) { (result) in
+            switch result {
+            case .success(let response):
+                
+                let user = User(json: response.data)
+                DLUserManager.shared.currentUser = user
+                self.groupNavigationBar.updateUserInfo()
+            default: break
+            }
+        }
     }
     
     @objc func addGroup() {
@@ -112,7 +167,6 @@ class DLTaskGroupViewController: UIViewController {
             guard let name = alertVC.textFields?.first?.text else { return }
             self.add(name: name)
         }))
-        
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
@@ -126,9 +180,7 @@ class DLTaskGroupViewController: UIViewController {
     
     @objc func addButtonTapped() {
         let taskAddVC = DLTaskAddViewController()
-        let delete = CustomPresentationController(presentedViewController: taskAddVC, presenting: self)
-        taskAddVC.transitioningDelegate = delete
-        present(taskAddVC, animated: true, completion: nil)
+        customerPresent(taskAddVC)
     }
 }
 
@@ -138,17 +190,18 @@ extension DLTaskGroupViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func getTask(indexPath: IndexPath) -> TaskGroup {
-        let group: TaskGroup
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                group = DLTaskManager.shared.todayGroup
-            } else {
-                group = DLTaskManager.shared.inboxGroup
+            switch indexPath.row {
+            case 0:
+                return DLTaskManager.shared.inboxGroup
+//            case 1:
+//                return DLTaskManager.shared.todayGroup
+//
+            default:
+                return DLTaskManager.shared.importantGroup
             }
-        } else {
-            group = DLTaskManager.shared.taskGroups[indexPath.row]
         }
-        return group
+        return DLTaskManager.shared.taskGroups[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,8 +225,13 @@ extension DLTaskGroupViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let group: TaskGroup = getTask(indexPath: indexPath)
-        let vc = DLTaskListViewController(group: group)
-        navigationController?.pushViewController(vc)
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let vc = DLTaskImortantListViewController()
+            navigationController?.pushViewController(vc)
+        } else {
+            let vc = DLTaskListViewController(group: group)
+            navigationController?.pushViewController(vc)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -202,5 +260,23 @@ extension DLTaskGroupViewController: UITableViewDelegate, UITableViewDataSource 
             return 0.01
         }
         return 10
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section != 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let group: TaskGroup = getTask(indexPath: indexPath)
+        
+        DLTaskManager.shared.deleteGroup(group) { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
     }
 }

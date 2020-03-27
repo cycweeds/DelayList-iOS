@@ -103,6 +103,15 @@ class DLTaskListViewController: UIViewController {
     func changeImportant(task: Task, important: Bool) {
         task.isImportant = important
         tableView.reloadData()
+        
+        RSSessionManager.rs_request(RSRequestTask.update(task: task)) { (result) in
+            switch result {
+            case .success(let response):
+                break
+            default:
+                break
+            }
+        }
     }
     
     func addTask(name title: String) {

@@ -18,6 +18,15 @@ enum PresentationBackgroundStyle {
 }
 
 
+extension UIViewController {
+    func customerPresent(_ viewControllerToPresent: UIViewController, animated: Bool = true, style: PresentationBackgroundStyle = .black, completion: (() -> ())? = nil) {
+        let deletgate = CustomPresentationController(presentedViewController: viewControllerToPresent, presenting: self)
+        deletgate.backgroundStyle = style
+        viewControllerToPresent.transitioningDelegate = deletgate
+        present(viewControllerToPresent, animated: animated, completion: completion)
+    }
+}
+
 protocol CustomerPresentProtocol {
     var frameOfViewInContainerView: CGRect { get }
 }

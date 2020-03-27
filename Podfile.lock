@@ -1,10 +1,17 @@
 PODS:
   - Alamofire (4.9.1)
+  - AliyunOSSiOS (2.10.8)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - CWLKit (1.0.2)
   - DeviceKit (2.1.0)
   - Fabric (1.10.2)
+  - JCore (2.2.2)
+  - JPush (3.3.0):
+    - JCore (< 3.0.0, >= 2.0.0)
+  - Kingfisher (5.13.2):
+    - Kingfisher/Core (= 5.13.2)
+  - Kingfisher/Core (5.13.2)
   - MJRefresh (3.2.0)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
@@ -12,6 +19,7 @@ PODS:
   - SnapKit (5.0.1)
   - SwiftLint (0.35.0)
   - SwiftyJSON (5.0.0)
+  - WXImageCompress (0.1.3)
   - XCGLogger (7.0.0):
     - XCGLogger/Core (= 7.0.0)
   - XCGLogger/Core (7.0.0):
@@ -19,14 +27,18 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AliyunOSSiOS
   - Crashlytics
   - CWLKit (~> 1.0.2)
   - DeviceKit
   - Fabric
+  - JPush
+  - Kingfisher
   - MJRefresh
   - SnapKit
   - SwiftLint
   - SwiftyJSON
+  - WXImageCompress
   - XCGLogger
 
 SPEC REPOS:
@@ -41,22 +53,32 @@ SPEC REPOS:
     - XCGLogger
   trunk:
     - Alamofire
+    - AliyunOSSiOS
     - CWLKit
     - Fabric
+    - JCore
+    - JPush
+    - Kingfisher
+    - WXImageCompress
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AliyunOSSiOS: 8db92936545593b9e5c66d680ef2ac0738946651
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   CWLKit: 52a96e63d12dcd92f92db6500e711c6f24ea9990
   DeviceKit: 2f6c28410d5a5fe2977be7f8cb9b313d28bdae69
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  JCore: 2e6690b41b1b59c4a768e0a3187c311911c02ca8
+  JPush: 65cd9d8cb050b6d8c95736517d846fac2f53c134
+  Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: 7cc298f661b2d437ff62bd2b70a197e90077bdbe
+PODFILE CHECKSUM: b32337c58829885d6b890538e80428b7b0bacb47
 
 COCOAPODS: 1.8.4

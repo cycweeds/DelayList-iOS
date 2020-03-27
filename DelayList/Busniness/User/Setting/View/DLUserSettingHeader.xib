@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="yhQ-5M-wqE" customClass="DLUserSettingHeader" customModule="DelayList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="599" height="336"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="djz-8c-Wo9">
+                    <rect key="frame" x="239.5" y="84" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="djz-8c-Wo9" secondAttribute="height" id="WYg-ht-EdO"/>
+                        <constraint firstAttribute="width" constant="120" id="ez9-ID-Tzj"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="60"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="laal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="reP-FR-caJ">
+                    <rect key="frame" x="0.0" y="216" width="599" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="nrL-36-lBN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="djz-8c-Wo9" firstAttribute="centerX" secondItem="yhQ-5M-wqE" secondAttribute="centerX" id="8he-P8-6ct"/>
+                <constraint firstItem="reP-FR-caJ" firstAttribute="top" secondItem="djz-8c-Wo9" secondAttribute="bottom" constant="12" id="HM4-QH-rlW"/>
+                <constraint firstItem="po5-57-Hqz" firstAttribute="trailing" secondItem="reP-FR-caJ" secondAttribute="trailing" id="YDF-SH-gru"/>
+                <constraint firstItem="reP-FR-caJ" firstAttribute="centerX" secondItem="yhQ-5M-wqE" secondAttribute="centerX" id="i9M-LY-ALW"/>
+                <constraint firstItem="djz-8c-Wo9" firstAttribute="top" secondItem="po5-57-Hqz" secondAttribute="top" constant="40" id="ihU-To-7dR"/>
+                <constraint firstItem="reP-FR-caJ" firstAttribute="leading" secondItem="po5-57-Hqz" secondAttribute="leading" id="sE8-Tq-vs3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="po5-57-Hqz"/>
+            <connections>
+                <outlet property="avatarImageView" destination="djz-8c-Wo9" id="CV9-ow-YmB"/>
+                <outlet property="userNameTF" destination="reP-FR-caJ" id="qPb-Aj-mWo"/>
+            </connections>
+            <point key="canvasLocation" x="200.72463768115944" y="-368.97321428571428"/>
+        </view>
+    </objects>
+</document>
