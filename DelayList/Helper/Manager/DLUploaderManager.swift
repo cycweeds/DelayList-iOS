@@ -17,7 +17,7 @@ class DLUploaderManager {
     
     
     lazy var client: OSSClient = {
-        let provider = OSSAuthCredentialProvider(authServerUrl: "http://192.168.1.34:7080"){ (data) -> Data? in
+        let provider = OSSAuthCredentialProvider(authServerUrl: "http://127.0.0.1:7080"){ (data) -> Data? in
             let str =  String(data: data, encoding: .utf8)
             return data
         }

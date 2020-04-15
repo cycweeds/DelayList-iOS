@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
+   
     func applicationWillResignActive(_ application: UIApplication) {
         JPUSHService.setBadge(0)
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DLTaskContactCell: UITableViewCell {
+class DLTaskContactCell: DLTaskBaseCell {
     
     
     
@@ -17,7 +17,7 @@ class DLTaskContactCell: UITableViewCell {
         
         selectionStyle = .none
         imageView?.image = UIImage(named: "inbox")
-        
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         
     }
     
@@ -28,9 +28,11 @@ class DLTaskContactCell: UITableViewCell {
     func updateContact(_ phone: String?) {
         if let phone = phone {
             textLabel?.text = phone
-            textLabel?.textColor = UIColor.black
+            textLabel?.textColor = UIColor.dl_blue_6CAAF2
+            cancelButton.isHidden = false
         } else {
             textLabel?.text = "联系人"
+            cancelButton.isHidden = true
             textLabel?.textColor = UIColor.dl_gray_BBBBBB
         }
         

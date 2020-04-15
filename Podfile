@@ -20,6 +20,8 @@ pod 'SwiftLint'
 # 约束
 pod 'SnapKit'
 
+pod 'IQKeyboardManagerSwift'
+
 pod 'Kingfisher'
 
 # JSON解析
@@ -36,6 +38,7 @@ pod 'Crashlytics'
 pod 'Alamofire'
 
 pod 'JPush'
+
 
 pod 'WXImageCompress'
 

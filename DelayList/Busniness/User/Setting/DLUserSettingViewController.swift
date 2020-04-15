@@ -10,8 +10,18 @@ import UIKit
 import PhotosUI
 import WXImageCompress
 
-class DLUserSettingViewController: UIViewController {
+fileprivate enum DLUserSettingAction {
+    case advanced
+    case logout
     
+    case about
+    case comment
+    case contactUs
+}
+
+
+class DLUserSettingViewController: UIViewController {
+
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero)
@@ -37,6 +47,12 @@ class DLUserSettingViewController: UIViewController {
         header.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "viewTapped"))
         return header
     }()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
+    private var actions: [[DLUserSettingAction]] = [[.advanced, .logout], [.about, .comment, .contactUs]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,14 +109,11 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
         header.userNameTF.resignFirstResponder()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return actions.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        }
-        return 3
+        return actions[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,22 +121,25 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none
         cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         cell.textLabel?.textColor = .black
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "高级"
-            } else {
-                cell.textLabel?.text = "登出"
-                cell.textLabel?.textColor = .dl_red_B02424
-            }
-        } else {
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "关于"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "评价"
-            } else if indexPath.row == 2 {
-                cell.textLabel?.text = "联系我们"
-            }
+        cell.accessoryType = .disclosureIndicator
+        
+        let action = actions[indexPath.section][indexPath.row]
+        
+        switch action {
+        case .advanced:
+            cell.textLabel?.text = "高级"
+        case .logout:
+            cell.textLabel?.text = "登出"
+            cell.textLabel?.textColor = .dl_red_B02424
+            cell.accessoryType = .none
+        case .about:
+            cell.textLabel?.text = "关于"
+        case .comment:
+            cell.textLabel?.text = "来评价"
+        case .contactUs:
+            cell.textLabel?.text = "联系我们"
         }
+
         return cell
     }
     
@@ -141,23 +157,31 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
         return 40
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 {
-            if indexPath.row == 1 {
-                DLUserManager.shared.logout()
-            }
-            
-        } else if indexPath.section == 1 {
-            if indexPath.row == 1 {
-                // 评价
-                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1455435248?action=write-review") {
+        let action = actions[indexPath.section][indexPath.row]
+        
+        switch action {
+        case .logout:
+            DLUserManager.shared.logout()
+        case .comment:
+            // TODO: 苹果id 替换评价
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/id1455435248?action=write-review") {
+                if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
-                
             }
+            case .advanced:
+            break
+        case .about:
+            let vc = DLAboutViewController()
+            navigationController?.pushViewController(vc)
+        case .contactUs:
+            let contactUsVC = DLContactUsViewController()
+            navigationController?.pushViewController(contactUsVC)
         }
+        
+    
     }
 }
 
@@ -167,6 +191,9 @@ extension DLUserSettingViewController: UITextFieldDelegate {
         
         if DLUserManager.shared.currentUser?.name != textField.text {
             
+            if textField.text!.count > 15 {
+                return
+            }
             
             DLUserManager.shared.updateCurrentUser(params: ["name": textField.text ?? ""]) { [weak self] in
                 self?.header.updateUser()

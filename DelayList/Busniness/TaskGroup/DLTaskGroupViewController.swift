@@ -15,6 +15,7 @@ class DLTaskGroupViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        tableView.cwl.cancelSelfSizing()
         tableView.separatorStyle = .none
         tableView.tableFooterView = addGroupFooter
         
@@ -159,7 +160,7 @@ class DLTaskGroupViewController: UIViewController {
     }
     
     @objc func addGroup() {
-        let alertVC = UIAlertController(title: "group 创建", message: nil, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "列表创建", message: nil, preferredStyle: .alert)
         alertVC.addTextField { (tf) in
             
         }
@@ -224,14 +225,19 @@ extension DLTaskGroupViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let group: TaskGroup = getTask(indexPath: indexPath)
-        if indexPath.section == 0 && indexPath.row == 1 {
-            let vc = DLTaskImortantListViewController()
-            navigationController?.pushViewController(vc)
-        } else {
-            let vc = DLTaskListViewController(group: group)
-            navigationController?.pushViewController(vc)
+        
+        DispatchQueue.main.async {
+
+            let group: TaskGroup = self.getTask(indexPath: indexPath)
+            if indexPath.section == 0 && indexPath.row == 1 {
+                let vc = DLTaskImortantListViewController()
+                self.navigationController?.pushViewController(vc)
+            } else {
+                let vc = DLTaskListViewController(group: group)
+                self.navigationController?.pushViewController(vc)
+            }
         }
+        
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

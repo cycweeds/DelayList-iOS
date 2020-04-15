@@ -55,9 +55,8 @@ class DLNavigationController: UINavigationController {
     }
     
     override var childForStatusBarStyle: UIViewController? {
-        return nil
+        return topViewController
     }
-    
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)

@@ -14,7 +14,6 @@ class DLUserSettingHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
         backgroundView = UIView()
     }
     

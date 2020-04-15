@@ -36,7 +36,7 @@ class DLTaskContactSettingViewController: UIViewController {
         super.viewDidLoad()
         title = "联系人"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "确定", style: .done, target: self, action: "confirmButtonTapped")
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "完成", style: .done, target: self, action: "confirmButtonTapped")
         view.backgroundColor = .white
         
         view.addSubview(textField)
@@ -82,8 +82,6 @@ extension DLTaskContactSettingViewController: CustomerPresentProtocol {
     var frameOfViewInContainerView: CGRect {
         return CGRect(x: 0, y: kScreenHeight - 300 , width: kScreenWidth, height: 300)
     }
-    
-    
 }
 
 

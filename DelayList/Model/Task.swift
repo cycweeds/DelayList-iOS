@@ -54,7 +54,7 @@ class Task {
         }
     }
     
-    var note: String?
+    var note: String = ""
     
     var contactPhone: String?
     
@@ -69,7 +69,7 @@ class Task {
         id = json["id"].intValue
         title = json["title"].stringValue
         groupId = json["groupId"].int
-        note = json["note"].string
+        note = json["note"].stringValue
         isComplete = json["complete"].boolValue
         isImportant = json["isImportant"].boolValue
         contactPhone = json["contactPhone"].string

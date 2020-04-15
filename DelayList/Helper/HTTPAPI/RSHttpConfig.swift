@@ -12,9 +12,9 @@ public var kHttpBaseURL: String {
     
     switch AppConstants.BuildChannel {
     case .debug:
-        return "http://192.168.1.34:8080"
+        return "http://127.0.0.1:8080"
     case .release:
-        return "https://api.delaylist.cn"
+        return "https://delaylist.cn"
     }
 }
 

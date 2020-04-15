@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NSContactsUsageDescription</key>
 	<string>请运行访问通讯录，以便快速导入任务联系人</string>
 	<key>NSPhotoLibraryUsageDescription</key>

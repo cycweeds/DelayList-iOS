@@ -67,13 +67,15 @@ enum RSRequestTask: RSHTTPRequestProtocol {
             return params
         case .update(let task):
             
-            var params: [String : Any] = ["important": task.isImportant, "title": task.title, "complete": task.isComplete]
-            if let note = task.note {
-                params.updateValue(note, forKey: "note")
-            }
+            var params: [String: Any] = ["important": task.isImportant, "title": task.title, "complete": task.isComplete]
+            params.updateValue(task.note, forKey: "note")
             
             if let dueDateTimestamp = task.dueDate?.timeIntervalSince1970 {
                 params.updateValue(Int(dueDateTimestamp) * 1000, forKey: "dueDateTimestamp")
+            }
+            
+            if let remindDateTimestamp = task.remindDate?.timeIntervalSince1970 {
+                params.updateValue(Int(remindDateTimestamp) * 1000, forKey: "remindDateTimestamp")
             }
             
             if let contactPhone = task.contactPhone {

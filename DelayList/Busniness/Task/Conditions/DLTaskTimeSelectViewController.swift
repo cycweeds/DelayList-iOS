@@ -36,7 +36,7 @@ class DLTaskTimeSelectViewController: UIViewController {
             navigationItem.leftBarButtonItem = deleteItem
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "确定", style: .done, target: self, action: #selector(rightItemTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .done, target: self, action: #selector(rightItemTapped))
         
         view.addSubview(timeView)
         timeView.snp.makeConstraints { (make) in

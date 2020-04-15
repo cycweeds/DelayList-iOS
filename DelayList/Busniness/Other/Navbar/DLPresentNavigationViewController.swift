@@ -49,7 +49,7 @@ extension DLPresentNavigationViewController: CustomerPresentProtocol {
 
 
 
-private class DLPresentNavigationBar: UINavigationBar {
+class DLPresentNavigationBar: UINavigationBar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,8 +59,10 @@ private class DLPresentNavigationBar: UINavigationBar {
         shadowImage = UIImage()
     }
     
+    let shapeLayer = CAShapeLayer()
+    
     lazy var once: Void = {
-        let shapeLayer = CAShapeLayer()
+        
         let path = UIBezierPath.init(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 12, height: 12))
         shapeLayer.path = path.cgPath
         layer.backgroundColor = UIColor.white.cgColor

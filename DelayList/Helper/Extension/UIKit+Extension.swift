@@ -25,8 +25,9 @@ extension UIColor {
     
     // 黑体的文字
     static var dl_black_333333 = UIColor.init(hexString: "333333")
+    static var dl_black_999999 = UIColor.init(hexString: "999999")
     
-    
+    static var dl_orange_E4E20A = UIColor.init(hexString: "E4E20A")
 }
 
 

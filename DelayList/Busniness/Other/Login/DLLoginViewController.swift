@@ -59,12 +59,12 @@ class DLLoginViewController: UIViewController {
 
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        loginButton.isEnabled = false
-        indicatiorView.startAnimating()
+        
         
         guard let code = verificationCodeInputTextField.text else { return }
         guard let phone = phoneTextField.text else { return }
-        
+        loginButton.isEnabled = false
+        indicatiorView.startAnimating()
         
         RSSessionManager.rs_request(RSRequestUser.login(verificationCode: code, phone: phone)) { (result) in
             self.loginButton.isEnabled = true
@@ -86,9 +86,12 @@ class DLLoginViewController: UIViewController {
     
     
     @IBAction func fetchVerificationCode() {
-        verificationCodeButton.isEnabled = false
+        
         
         guard let phone = phoneTextField.text else { return }
+        if phone.isEmpty { return }
+        
+        verificationCodeButton.isEnabled = false
         
         RSSessionManager.rs_request(RSRequestUser.getVerificationCode(phone: phone)) {  [weak self] (result) in
             guard let strongSelf = self else { return }

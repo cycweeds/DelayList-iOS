@@ -19,6 +19,11 @@
 		095E0AFB2424B4D700B3BC87 /* DLUserSettingHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 095E0AFA2424B4D700B3BC87 /* DLUserSettingHeader.xib */; };
 		095E0AFD2424CB6900B3BC87 /* DLUserSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E0AFC2424CB6900B3BC87 /* DLUserSettingCell.swift */; };
 		095E0AFF242C5CFA00B3BC87 /* DLUploaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E0AFE242C5CFA00B3BC87 /* DLUploaderManager.swift */; };
+		095E0B01243C6BFB00B3BC87 /* DLContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E0B00243C6BFB00B3BC87 /* DLContactUsViewController.swift */; };
+		095E0B03243C8A9200B3BC87 /* DLAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E0B02243C8A9200B3BC87 /* DLAboutViewController.swift */; };
+		095E0B05243C9B6500B3BC87 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095E0B04243C9B6500B3BC87 /* Launch Screen.storyboard */; };
+		096A1A1F2445A61300141167 /* DLTaskBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A1A1E2445A61300141167 /* DLTaskBaseCell.swift */; };
+		096A1A212447180E00141167 /* DLTaskNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A1A202447180E00141167 /* DLTaskNoteViewController.swift */; };
 		09804F8723FA762100559862 /* RSHttpConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F6C23FA762100559862 /* RSHttpConfig.swift */; };
 		09804F8823FA762100559862 /* RSResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F6D23FA762100559862 /* RSResult.swift */; };
 		09804F8B23FA762100559862 /* RSHttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09804F7123FA762100559862 /* RSHttpError.swift */; };
@@ -80,6 +85,11 @@
 		095E0AFA2424B4D700B3BC87 /* DLUserSettingHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLUserSettingHeader.xib; sourceTree = "<group>"; };
 		095E0AFC2424CB6900B3BC87 /* DLUserSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLUserSettingCell.swift; sourceTree = "<group>"; };
 		095E0AFE242C5CFA00B3BC87 /* DLUploaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLUploaderManager.swift; sourceTree = "<group>"; };
+		095E0B00243C6BFB00B3BC87 /* DLContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLContactUsViewController.swift; sourceTree = "<group>"; };
+		095E0B02243C8A9200B3BC87 /* DLAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLAboutViewController.swift; sourceTree = "<group>"; };
+		095E0B04243C9B6500B3BC87 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		096A1A1E2445A61300141167 /* DLTaskBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskBaseCell.swift; sourceTree = "<group>"; };
+		096A1A202447180E00141167 /* DLTaskNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskNoteViewController.swift; sourceTree = "<group>"; };
 		09804F6C23FA762100559862 /* RSHttpConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHttpConfig.swift; sourceTree = "<group>"; };
 		09804F6D23FA762100559862 /* RSResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSResult.swift; sourceTree = "<group>"; };
 		09804F7123FA762100559862 /* RSHttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSHttpError.swift; sourceTree = "<group>"; };
@@ -169,6 +179,8 @@
 			children = (
 				095E0AF72424B44D00B3BC87 /* View */,
 				095B6ADD2423377900CA22EF /* DLUserSettingViewController.swift */,
+				095E0B00243C6BFB00B3BC87 /* DLContactUsViewController.swift */,
+				095E0B02243C8A9200B3BC87 /* DLAboutViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -277,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				09F50B4723576D4C006201E0 /* Assets.xcassets */,
+				095E0B04243C9B6500B3BC87 /* Launch Screen.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -384,6 +397,7 @@
 		09C67DD923FEC6D900A76DAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				096A1A1E2445A61300141167 /* DLTaskBaseCell.swift */,
 				09C67DDF2404EFCD00A76DAB /* DLTaskNoteCell.swift */,
 				09C67DE82407573700A76DAB /* DLTaskContactCell.swift */,
 				09C67DE3240524A100A76DAB /* DLTaskDueDateCell.swift */,
@@ -397,6 +411,7 @@
 			children = (
 				09C67DE6240526FD00A76DAB /* DLTaskTimeSelectViewController.swift */,
 				09C67DEC24075BED00A76DAB /* DLTaskContactSettingViewController.swift */,
+				096A1A202447180E00141167 /* DLTaskNoteViewController.swift */,
 			);
 			path = Conditions;
 			sourceTree = "<group>";
@@ -537,6 +552,7 @@
 			files = (
 				09A8039C23FD7FE800F81D89 /* DLTaskCell.xib in Resources */,
 				09532CD223BDCEAC00AE0E73 /* DLLoginViewController.xib in Resources */,
+				095E0B05243C9B6500B3BC87 /* Launch Screen.storyboard in Resources */,
 				09A803A023FE4E0E00F81D89 /* DLTaskAddHeaderView.xib in Resources */,
 				09F50B4823576D4C006201E0 /* Assets.xcassets in Resources */,
 				095E0AFB2424B4D700B3BC87 /* DLUserSettingHeader.xib in Resources */,
@@ -599,6 +615,7 @@
 				09804FBC23FD002800559862 /* RSRequestTaskGroup.swift in Sources */,
 				09804FBF23FD038900559862 /* DLTaskManager.swift in Sources */,
 				095E0AFF242C5CFA00B3BC87 /* DLUploaderManager.swift in Sources */,
+				096A1A1F2445A61300141167 /* DLTaskBaseCell.swift in Sources */,
 				095B6ADE2423377900CA22EF /* DLUserSettingViewController.swift in Sources */,
 				09804FB323FCFDF100559862 /* DLTaskGroupCell.swift in Sources */,
 				09532CD123BDCEAC00AE0E73 /* DLLoginViewController.swift in Sources */,
@@ -607,6 +624,7 @@
 				09804F8B23FA762100559862 /* RSHttpError.swift in Sources */,
 				09804FA223FA772700559862 /* AppConstants.swift in Sources */,
 				09901356235780B100285128 /* DLTabbarViewController.swift in Sources */,
+				095E0B03243C8A9200B3BC87 /* DLAboutViewController.swift in Sources */,
 				09901363235782F600285128 /* DLNavigationController.swift in Sources */,
 				09804F8D23FA762100559862 /* RSResponese.swift in Sources */,
 				0954083D241397DB0056EB1D /* DLTaskImortantListViewController.swift in Sources */,
@@ -627,9 +645,11 @@
 				0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */,
 				09804FB823FCFED200559862 /* TaskGroup.swift in Sources */,
 				09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */,
+				095E0B01243C6BFB00B3BC87 /* DLContactUsViewController.swift in Sources */,
 				09804F8823FA762100559862 /* RSResult.swift in Sources */,
 				09804FB623FCFEAC00559862 /* Task.swift in Sources */,
 				09A8039723FD7D1D00F81D89 /* DLTaskListViewController.swift in Sources */,
+				096A1A212447180E00141167 /* DLTaskNoteViewController.swift in Sources */,
 				09804F9B23FA762100559862 /* RSRequestUser.swift in Sources */,
 				09A8039E23FE4E0500F81D89 /* DLTaskAddHeaderView.swift in Sources */,
 				09804F9F23FA762100559862 /* RSHTTPRequestProtocol.swift in Sources */,

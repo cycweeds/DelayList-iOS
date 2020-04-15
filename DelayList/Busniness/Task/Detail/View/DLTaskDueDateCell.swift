@@ -8,14 +8,14 @@
 
 import Foundation
 
-class DLTaskDueDateCell: UITableViewCell {
-    
-    
+class DLTaskDueDateCell: DLTaskBaseCell {
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
         textLabel?.text = "请设置到期时间"
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         
         imageView?.snp.makeConstraints({ (make) in
             make.left.equalTo(25)
@@ -36,45 +36,68 @@ class DLTaskDueDateCell: UITableViewCell {
     }
     
     
+    /// 更新截止日期
     func updateDueDate(_ dueDate: Date?) {
         imageView?.image = UIImage(named: "dueTime")
         if let date = dueDate {
             
-            textLabel?.textColor = UIColor.black
+            let now = Date()
             if date.isToday {
-                textLabel?.text = "今天"
-                return
-            }
-            let formatter = DateFormatter()
-            // 是否是今年
-            if date.year == Date().year {
-                formatter.dateFormat = "M-d"
-                
+                textLabel?.text = "今天" + " 到期"
             } else {
-                formatter.dateFormat = "yyyy-MM-dd"
+                let formatter = DateFormatter()
+                
+                // 是否是今年
+                if date.year == now.year {
+                    formatter.dateFormat = "M月d日"
+                    
+                } else {
+                    formatter.dateFormat = "yyyy年M月d日"
+                }
+                textLabel?.text = formatter.string(from: date) + " 到期"
             }
-            textLabel?.text = formatter.string(from: date)
             
+            
+            if date.year >= now.year && date.month >= now.month && date.day >= now.day {
+                // 未到期
+                textLabel?.textColor = UIColor.dl_blue_6CAAF2
+            } else {
+                textLabel?.textColor = UIColor.dl_red_B02424
+            }
+            cancelButton.isHidden = false
         } else {
             textLabel?.text = "截止日期"
+            cancelButton.isHidden = true
             textLabel?.textColor = UIColor.dl_gray_BBBBBB
         }
     }
     
     
+    /// 更新提醒日期
     func updateRemindDate(_ remindDate: Date?) {
         imageView?.image = UIImage(named: "remind")
         if let date = remindDate {
             let formatter = DateFormatter()
             // 是否是今年
-            if date.year == Date().year {
-                formatter.dateFormat = "MM-dd HH:mm"
+            let now = Date()
+            if date.year == now.year {
+                formatter.dateFormat = "M月d日 H:mm"
             } else {
-                formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                formatter.dateFormat = "yyyy年M月d日 H:mm"
             }
-            textLabel?.text = formatter.string(from: date)
-            textLabel?.textColor = UIColor.black
+            
+            textLabel?.text = formatter.string(from: date) + " 提醒"
+            
+            if date > now {
+                         // 未到期
+                         textLabel?.textColor = UIColor.dl_blue_6CAAF2
+                     } else {
+                         textLabel?.textColor = UIColor.dl_red_B02424
+                     }
+            
+            cancelButton.isHidden = false
         } else {
+            cancelButton.isHidden = true
             textLabel?.text = "提醒时间"
             textLabel?.textColor = UIColor.dl_gray_BBBBBB
             

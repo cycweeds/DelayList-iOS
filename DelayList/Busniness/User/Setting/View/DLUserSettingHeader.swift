@@ -16,7 +16,6 @@ class DLUserSettingHeader: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
         updateUser()
     }
     

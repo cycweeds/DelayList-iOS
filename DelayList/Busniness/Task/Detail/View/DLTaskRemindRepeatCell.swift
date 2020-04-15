@@ -7,24 +7,29 @@
 //
 
 import Foundation
-
-class DLTaskRemindRepeatCell: UITableViewCell {
+import UIKit
+class DLTaskRemindRepeatCell: DLTaskBaseCell {
     
+   
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        selectionStyle = .none
         imageView?.snp.makeConstraints({ (make) in
             make.left.equalTo(25)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(16)
         })
         
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         
         textLabel?.snp.makeConstraints({ (make) in
             make.left.equalTo(55)
             make.centerY.equalToSuperview()
         })
+        
+       
         imageView?.image = UIImage(named: "repeat")
     }
     
@@ -36,9 +41,11 @@ class DLTaskRemindRepeatCell: UITableViewCell {
     func updateFrequency(_ frequency: TaskRemindFrequency?) {
           if let frequency = frequency {
             textLabel?.text = frequency.description
-            textLabel?.textColor = UIColor.black
+            textLabel?.textColor = UIColor.dl_blue_6CAAF2
+            cancelButton.isHidden = false
                 } else {
-                      textLabel?.text = "重复"
+            cancelButton.isHidden = true
+                    textLabel?.text = "重复"
             textLabel?.textColor = UIColor.dl_gray_BBBBBB
                   }
     }
