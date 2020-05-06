@@ -27,7 +27,7 @@ class DLTaskNoteCell: UITableViewCell {
         contentView.addSubview(remarkLabel)
         
         remarkLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(12)
+            make.left.equalTo(25)
             make.right.equalTo(-12)
             make.top.equalTo(8)
             make.bottom.lessThanOrEqualTo(-8)

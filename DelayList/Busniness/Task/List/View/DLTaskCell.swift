@@ -11,6 +11,7 @@ import UIKit
 class DLTaskCell: UITableViewCell {
     @IBOutlet weak var completedButton: UIButton! {
         didSet {
+            completedButton.expandHotPoint = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             completedButton.addTarget(self, action: #selector(completedButtonTapped), for: .touchUpInside)
         }
     }
@@ -24,7 +25,8 @@ class DLTaskCell: UITableViewCell {
             importantButton.addTarget(self, action: #selector(importantButtonTapped), for: .touchUpInside)
         }
     }
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var textField: UITextField!
     
     var completedButtonTapHandler: (() -> ())?
     
@@ -47,6 +49,7 @@ class DLTaskCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = .clear
         contentView.backgroundColor = UIColor.white
+        isUseByDetail = false
     }
 
     override func layoutSubviews() {
@@ -59,15 +62,27 @@ class DLTaskCell: UITableViewCell {
     }
    
     
+    var isUseByDetail: Bool = false {
+        didSet {
+            if isUseByDetail {
+                textField.isEnabled = true
+                textField.font = UIFont.boldSystemFont(ofSize: 18)
+            } else {
+                textField.isEnabled = false
+                textField.font = UIFont.boldSystemFont(ofSize: 16)
+            }
+        }
+    }
+    
     func update(task: Task) {
         if task.isComplete {
             completedButton.isSelected = true
-            titleLabel.attributedText = NSAttributedString(string: task.title, attributes: [NSAttributedString.Key.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue), NSAttributedString.Key.foregroundColor: UIColor.dl_gray_d8d8d8])
+            textField.attributedText = NSAttributedString(string: task.title, attributes: [NSAttributedString.Key.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue), NSAttributedString.Key.foregroundColor: UIColor.dl_gray_d8d8d8])
             contentView.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         } else {
             contentView.backgroundColor = .white
             completedButton.isSelected = false
-            titleLabel.attributedText = NSAttributedString(string: task.title)
+            textField.attributedText = NSAttributedString(string: task.title)
         }
         
         importantButton.isHidden = true

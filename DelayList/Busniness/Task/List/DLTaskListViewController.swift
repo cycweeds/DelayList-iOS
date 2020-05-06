@@ -16,6 +16,7 @@ class DLTaskListViewController: UIViewController {
     
     var unCompleteTasks: [Task] = []
     
+    /// 是否展示sectionHeader
     var showComplete = false
     
     lazy var tableView: UITableView = {
@@ -27,7 +28,7 @@ class DLTaskListViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = header
         tableView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
-    
+        
         tableView.cwl.cancelSelfSizing()
         
         
@@ -69,21 +70,72 @@ class DLTaskListViewController: UIViewController {
         fetchData()
     }
     
-    func changeComplete(task: Task) {
-        task.isComplete = !task.isComplete
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    func changeComplete(task: Task, indexPath: IndexPath) {
+        tableView.beginUpdates()
+        
+        if !task.isComplete {
+            // 未完成 -> 完成
+            completeTasks.append(task)
+            if let index = unCompleteTasks.firstIndex (where: { (unCompleteTask) -> Bool in
+                return task.id == unCompleteTask.id
+            }) {
+                unCompleteTasks.remove(at: index)
+                tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                
+            }
+            if completeTasks.count == 1 {
+                tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            } else {
+                if showComplete {
+                    tableView.insertRows(at: [IndexPath(row: completeTasks.count - 1, section: 1)], with: .automatic)
+                }
+            }
+            
+            
+            
+        } else {
+            unCompleteTasks.append(task)
+            if let index = completeTasks.firstIndex (where: { (unCompleteTask) -> Bool in
+                return task.id == unCompleteTask.id
+            }) {
+                completeTasks.remove(at: index)
+                if completeTasks.isEmpty {
+                    tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+                } else {
+                    tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+                }
+            }
+            
+            tableView.insertRows(at: [IndexPath(row: unCompleteTasks.count - 1, section: 0)], with: .automatic)
+            
+        }
+        
+        task.isComplete = !task.isComplete
+        
+        tableView.endUpdates()
+        
         RSSessionManager.rs_request(RSRequestTask.changeCompleted(taskId: task.id, isComplete: task.isComplete)) { (result) in
             
         }
     }
     
     func delete(task: Task) {
+        tableView.beginUpdates()
         if task.isComplete {
             if let index = completeTasks.firstIndex(where: { (subTask) -> Bool in
                 subTask === task
             }) {
                 completeTasks.remove(at: index)
-                tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+                if completeTasks.isEmpty {
+                    tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+                } else {
+                    tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+                }
             }
         } else {
             if let index = unCompleteTasks.firstIndex(where: { (subTask) -> Bool in
@@ -94,15 +146,19 @@ class DLTaskListViewController: UIViewController {
             }
         }
         
+        tableView.endUpdates()
         
         RSSessionManager.rs_request(RSRequestTask.delete(taskId: task.id)) { (result) in
             
         }
     }
     
-    func changeImportant(task: Task, important: Bool) {
+    func changeImportant(task: Task, important: Bool, indexPath: IndexPath) {
+        
         task.isImportant = important
+        
         tableView.reloadData()
+        
         
         RSSessionManager.rs_request(RSRequestTask.update(task: task)) { (result) in
             switch result {
@@ -124,8 +180,8 @@ class DLTaskListViewController: UIViewController {
         tableView.insertRows(at: [IndexPath(item: unCompleteTasks.count - 1, section: 0)], with: .automatic)
         var paramters: [String: Any] = ["title": title]
         if let groupId = group?.id {
-                   paramters.updateValue(groupId, forKey: "groupId")
-               }
+            paramters.updateValue(groupId, forKey: "groupId")
+        }
         RSSessionManager.rs_request(RSRequestTask.add(params: paramters)) { (result) in
             switch result {
             case .success(let response):
@@ -135,15 +191,15 @@ class DLTaskListViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
     func fetchData() {
         RSSessionManager.rs_request(RSRequestTask.get(groupId: group?.id)) { [weak self] (result) in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let response):
-                 response.data.arrayValue.forEach {
-                  let task =  Task(json: $0)
+                response.data.arrayValue.forEach {
+                    let task =  Task(json: $0)
                     if task.isComplete {
                         strongSelf.completeTasks.append(task)
                     } else {
@@ -183,10 +239,10 @@ extension DLTaskListViewController: UITableViewDelegate, UITableViewDataSource {
         let task = indexPath.section == 0 ? unCompleteTasks[indexPath.row] : completeTasks[indexPath.row]
         cell.update(task: task)
         cell.completedButtonTapHandler = { [unowned self] in
-            self.changeComplete(task: task)
+            self.changeComplete(task: task, indexPath: indexPath)
         }
         cell.changeImportantHandler = { [unowned self] important in
-            self.changeImportant(task: task, important: important)
+            self.changeImportant(task: task, important: important, indexPath: indexPath)
         }
         return cell
     }
@@ -202,7 +258,7 @@ extension DLTaskListViewController: UITableViewDelegate, UITableViewDataSource {
         header.changeShowStatusHandler = { [unowned self] isShow in
             self.showComplete = isShow
             
-
+            
             tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
         }
         return header
@@ -212,7 +268,7 @@ extension DLTaskListViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 || completeTasks.isEmpty { return 0.01 }
         return 50
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = indexPath.section == 0 ? unCompleteTasks[indexPath.row] : completeTasks[indexPath.row]
         let vc = DLTaskDetailViewController(task: task)
@@ -229,17 +285,20 @@ extension DLTaskListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let task = indexPath.section == 0 ? unCompleteTasks[indexPath.row] : completeTasks[indexPath.row]
-            let delete = UITableViewRowAction(style: .normal, title: "删除") { [unowned self] (action, indexPath) in
-                self.delete(task: task)
-                   }
+        let delete = UITableViewRowAction(style: .normal, title: "删除") { [unowned self] (action, indexPath) in
+            self.delete(task: task)
+        }
         delete.backgroundColor = UIColor.red
-       
+        
         return [delete]
     }
 }
 
 extension DLTaskListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.markedTextRange != nil {
+            return true
+        }
         addTask(name: textField.text ?? "")
         textField.text = nil
         return true

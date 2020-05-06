@@ -15,19 +15,7 @@ class DLTaskDueDateCell: DLTaskBaseCell {
         
         selectionStyle = .none
         textLabel?.text = "请设置到期时间"
-        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        
-        imageView?.snp.makeConstraints({ (make) in
-            make.left.equalTo(25)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(16)
-        })
-        
-        
-        textLabel?.snp.makeConstraints({ (make) in
-            make.left.equalTo(55)
-            make.centerY.equalToSuperview()
-        })
+       
         
     }
     

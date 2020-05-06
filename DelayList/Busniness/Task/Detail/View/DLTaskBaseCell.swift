@@ -30,7 +30,21 @@ class DLTaskBaseCell: UITableViewCell {
             make.right.equalToSuperview().offset(-20)
             make.width.height.equalTo(20)
         }
+        selectionStyle = .none
         
+        imageView?.snp.makeConstraints({ (make) in
+            make.left.equalTo(25)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(20)
+        })
+        
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+               
+               
+               textLabel?.snp.makeConstraints({ (make) in
+                   make.left.equalTo(55)
+                   make.centerY.equalToSuperview()
+               })
     }
     
     

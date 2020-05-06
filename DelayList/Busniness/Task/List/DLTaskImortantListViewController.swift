@@ -95,6 +95,7 @@ extension DLTaskImortantListViewController: UITableViewDelegate, UITableViewData
         let taskGroup = groupTasks[section].0
         let header = tableView.cwl.dequeueReusableHeaderFooterView(class: DLTaskCompletedDivisionHeaderView.self)
         header.button.setTitle(taskGroup.title, for: .normal)
+        header.button.isEnabled = false
         return header
     }
     

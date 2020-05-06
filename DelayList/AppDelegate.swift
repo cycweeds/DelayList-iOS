@@ -14,6 +14,8 @@ import UIKit
 @_exported import Alamofire
 @_exported import Kingfisher
 
+import IQKeyboardManagerSwift
+
 
 
 @UIApplicationMain
@@ -89,9 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         JPUSHService.setup(withOption: launchOptions, appKey: "25a80b51697e0694d6655576", channel: "App Store", apsForProduction: AppConstants.isDebug())
       
+        
 
-
-        DLUploaderManager.shared
+        IQKeyboardManager.shared.enable = true
+        _ = DLUploaderManager.shared
+        
+        
 
     }
     
@@ -104,11 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-   
-    func applicationWillResignActive(_ application: UIApplication) {
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
         JPUSHService.setBadge(0)
     }
-    
+
 
 }
 

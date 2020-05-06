@@ -15,9 +15,8 @@ class DLTaskContactCell: DLTaskBaseCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        selectionStyle = .none
-        imageView?.image = UIImage(named: "inbox")
-        textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        
+        imageView?.image = UIImage(named: "contact")
         
     }
     

@@ -6,6 +6,7 @@ PODS:
   - CWLKit (1.0.2)
   - DeviceKit (2.1.0)
   - Fabric (1.10.2)
+  - IQKeyboardManagerSwift (6.5.5)
   - JCore (2.2.2)
   - JPush (3.3.0):
     - JCore (< 3.0.0, >= 2.0.0)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - CWLKit (~> 1.0.2)
   - DeviceKit
   - Fabric
+  - IQKeyboardManagerSwift
   - JPush
   - Kingfisher
   - MJRefresh
@@ -56,6 +58,7 @@ SPEC REPOS:
     - AliyunOSSiOS
     - CWLKit
     - Fabric
+    - IQKeyboardManagerSwift
     - JCore
     - JPush
     - Kingfisher
@@ -68,6 +71,7 @@ SPEC CHECKSUMS:
   CWLKit: 52a96e63d12dcd92f92db6500e711c6f24ea9990
   DeviceKit: 2f6c28410d5a5fe2977be7f8cb9b313d28bdae69
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   JCore: 2e6690b41b1b59c4a768e0a3187c311911c02ca8
   JPush: 65cd9d8cb050b6d8c95736517d846fac2f53c134
   Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
@@ -79,6 +83,6 @@ SPEC CHECKSUMS:
   WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: b32337c58829885d6b890538e80428b7b0bacb47
+PODFILE CHECKSUM: 1f99e218a0ec1ab47207325064fc2e437340e872
 
 COCOAPODS: 1.8.4

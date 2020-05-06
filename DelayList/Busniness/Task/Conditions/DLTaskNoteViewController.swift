@@ -12,7 +12,7 @@ class DLTaskNoteViewController: UIViewController {
     
     lazy var textView: UITextView = {
         let textView = UITextView(frame: CGRect.zero)
-        textView.contentInset = UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
+        textView.contentInset = UIEdgeInsets(top: 10, left: 12, bottom: 20, right: 12)
         textView.font = UIFont.boldSystemFont(ofSize: 16)
         textView.backgroundColor = .clear
         return textView
@@ -49,7 +49,9 @@ class DLTaskNoteViewController: UIViewController {
         let bar = navigationController?.navigationBar as? DLPresentNavigationBar
         bar?.layer.backgroundColor = noteColor.cgColor
            
-        textView.becomeFirstResponder()
+        if textView.text.isEmpty {        
+            textView.becomeFirstResponder()
+        }
     }
     
     @objc func rightItemTapped() {

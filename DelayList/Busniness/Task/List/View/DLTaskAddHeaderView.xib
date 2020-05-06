@@ -17,7 +17,7 @@
                     <rect key="frame" x="20" y="19" width="443" height="50"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="新建" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV1-Vg-HJa">
-                            <rect key="frame" x="60.5" y="0.0" width="362.5" height="50"/>
+                            <rect key="frame" x="53" y="0.0" width="370" height="50"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="sid-dF-mFm"/>
@@ -27,8 +27,12 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a6C-vc-QNW">
-                            <rect key="frame" x="20" y="14.5" width="20.5" height="19"/>
+                            <rect key="frame" x="20" y="12" width="25" height="24"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="0Vz-Wz-MTH"/>
+                                <constraint firstAttribute="height" constant="25" id="xnh-8W-fLe"/>
+                            </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.29734264964788731" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,7 +42,7 @@
                         <constraint firstItem="a6C-vc-QNW" firstAttribute="leading" secondItem="tY5-k0-tw3" secondAttribute="leading" constant="20" id="QXY-cB-4sM"/>
                         <constraint firstAttribute="trailing" secondItem="kV1-Vg-HJa" secondAttribute="trailing" constant="20" id="V5E-1e-3LX"/>
                         <constraint firstAttribute="height" constant="50" id="gch-1q-Kd8"/>
-                        <constraint firstItem="kV1-Vg-HJa" firstAttribute="leading" secondItem="a6C-vc-QNW" secondAttribute="trailing" constant="20" id="r06-s5-uKr"/>
+                        <constraint firstItem="kV1-Vg-HJa" firstAttribute="leading" secondItem="a6C-vc-QNW" secondAttribute="trailing" constant="8" id="r06-s5-uKr"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

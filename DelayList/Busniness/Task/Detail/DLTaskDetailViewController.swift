@@ -27,6 +27,8 @@ class DLTaskDetailViewController: UIViewController {
         return tableView
     }()
     
+    weak var textField: UITextField?
+    
     init(task: Task) {
         self.task = task
         super.init(nibName: nil, bundle: nil)
@@ -45,6 +47,28 @@ class DLTaskDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "移动", style: .plain, target: self, action: "moveToOther")
     }
+    
+    func changeImportant(important: Bool) {
+           task.isImportant = important
+           tableView.reloadData()
+           
+           RSSessionManager.rs_request(RSRequestTask.update(task: task)) { (result) in
+               switch result {
+               case .success(let response):
+                   break
+               default:
+                   break
+               }
+           }
+       }
+    
+    func changeComplete() {
+           task.isComplete = !task.isComplete
+           tableView.reloadData()
+           RSSessionManager.rs_request(RSRequestTask.changeCompleted(taskId: task.id, isComplete: task.isComplete)) { (result) in
+               
+           }
+       }
     
     @objc func moveToOther() {
         let alertVC = UIAlertController(title: "选择移动至", message: nil, preferredStyle: .actionSheet)
@@ -72,6 +96,20 @@ class DLTaskDetailViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
+    
+    private func updateTaskTitle() {
+        guard let title = textField?.text else {
+            return
+        }
+        if title == self.task.title {
+            return
+        }
+        
+        textField?.resignFirstResponder()
+        self.task.title = textField?.text ?? ""
+              DLTaskManager.shared.updateTask(task: self.task)
+              self.tableView.reloadData()
+    }
 }
 
 extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,12 +118,15 @@ extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource
         case dueDate
         case remindDate
         case remindFrequency
-        case contact
         case note
+        // 暂时移除联系人
+        case contact
+        
+        static let count = 5
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return TableSection.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if TableSection(rawValue: section) == TableSection.remindFrequency {
@@ -101,14 +142,17 @@ extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource
         switch tableSection {
         case .title:
             let cell = tableView.cwl.dequeueResuableCell(class: DLTaskCell.self, indexPath: indexPath)
+            self.textField = cell.textField
             cell.update(task: task)
+            cell.isUseByDetail = true
+            cell.textField.delegate = self
             cell.changeImportantHandler = { [unowned self] important in
-                
+                self.changeImportant(important: important)
             }
             
-            //            cell.completedButtonTapHandler = {
-            //
-            //            }
+                        cell.completedButtonTapHandler = { [unowned self] in
+                            self.changeComplete()
+                        }
             return cell
         case .dueDate:
             let cell = tableView.cwl.dequeueResuableCell(class: DLTaskDueDateCell.self, indexPath: indexPath)
@@ -172,6 +216,9 @@ extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        updateTaskTitle()
+        
         DispatchQueue.main.async {
             switch TableSection(rawValue: indexPath.section) {
             case .dueDate:
@@ -237,7 +284,7 @@ extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource
                         DLTaskManager.shared.updateTask(task: self.task)
                         self.tableView.reloadData()
                     }
-                    
+
                 }
                 self.customerPresent(DLPresentNavigationViewController(rootViewController: vc))
                 
@@ -255,5 +302,19 @@ extension DLTaskDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
         }
         
+    }
+}
+
+
+extension DLTaskDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.markedTextRange != nil {
+            return true
+        }
+        
+        updateTaskTitle()
+        
+        
+        return true
     }
 }
