@@ -52,7 +52,6 @@ class DLUploaderManager {
             
             completed?(nil)
             
-            print(task.error)
             
             return nil
         })

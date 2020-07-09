@@ -17,10 +17,19 @@ extension Notification.Name {
         
     }
     struct Task {
-           static var TaskUpdate = Notification.Name.init("User.TaskUpdate")
-           
-           
-           
-       }
+        static var Update = Notification.Name.init("User.Update")
+        static var Move = Notification.Name.init("User.Move")
+        
+        
+        
+    }
     
 }
+
+
+
+struct NotificationKey {
+    static let TaskCompleteChanged: String = "TaskCompleteChanged"
+}
+    
+

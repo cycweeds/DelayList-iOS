@@ -68,19 +68,46 @@ class DLTaskListViewController: UIViewController {
         view.backgroundColor = UIColor.dl_red_503939
         title = group?.title ?? ""
         fetchData()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        var allTasks = completeTasks
+        allTasks.append(contentsOf: unCompleteTasks)
+        completeTasks.removeAll(keepingCapacity: true)
+        unCompleteTasks.removeAll(keepingCapacity: true)
+        // 这里是为了防止数据在详情页面修改之后  返回列表页面数据错乱导致的
+        
+        for subTask in allTasks {
+            if subTask.groupId == self.group?.id {
+                if subTask.isComplete {
+                    completeTasks.append(subTask)
+                } else {
+                    unCompleteTasks.append(subTask)
+                }
+            }
+        }
+        
         tableView.reloadData()
     }
     
+    deinit {
+        
+    }
+    
+    
+    
     func changeComplete(task: Task, indexPath: IndexPath) {
         tableView.beginUpdates()
+        task.isComplete = !task.isComplete
         
-        if !task.isComplete {
+        if task.isComplete {
             // 未完成 -> 完成
-            completeTasks.append(task)
+            
             if let index = unCompleteTasks.firstIndex (where: { (unCompleteTask) -> Bool in
                 return task.id == unCompleteTask.id
             }) {
@@ -88,6 +115,8 @@ class DLTaskListViewController: UIViewController {
                 tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 
             }
+            
+            completeTasks.append(task)
             if completeTasks.count == 1 {
                 tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
             } else {
@@ -99,7 +128,7 @@ class DLTaskListViewController: UIViewController {
             
             
         } else {
-            unCompleteTasks.append(task)
+            // 完成 -> 已完成
             if let index = completeTasks.firstIndex (where: { (unCompleteTask) -> Bool in
                 return task.id == unCompleteTask.id
             }) {
@@ -110,12 +139,12 @@ class DLTaskListViewController: UIViewController {
                     tableView.deleteRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
                 }
             }
-            
+            unCompleteTasks.append(task)
             tableView.insertRows(at: [IndexPath(row: unCompleteTasks.count - 1, section: 0)], with: .automatic)
             
         }
         
-        task.isComplete = !task.isComplete
+        
         
         tableView.endUpdates()
         
@@ -153,6 +182,43 @@ class DLTaskListViewController: UIViewController {
         }
     }
     
+    func moveToOther(indexPath: IndexPath) {
+        let alertVC = UIAlertController(title: "选择移动至", message: nil, preferredStyle: .actionSheet)
+        let task = indexPath.section == 0 ? unCompleteTasks[indexPath.row] : completeTasks[indexPath.row]
+        for group in DLTaskManager.shared.taskGroups {
+            if task.groupId != group.id {
+                let action = UIAlertAction(title: group.title, style: .default) { _ in
+                    if let groupId = group.id {
+                        RSSessionManager.rs_request(RSRequestTask.moveToGroup(taskId: task.id, groupId: groupId)) { [weak self] (result) in
+                            switch result {
+                            case .success(let response):
+                                task.groupId = groupId
+                                
+                                self?.tableView.beginUpdates()
+                                if indexPath.section == 0 {
+                                    self?.unCompleteTasks.remove(at: indexPath.row)
+                                } else {
+                                    self?.completeTasks.remove(at: indexPath.row)
+                                }
+                                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                                
+                                self?.tableView.endUpdates()
+                                
+                                break
+                            default:
+                                break
+                            }
+                        }
+                    }
+                }
+                alertVC.addAction(action)
+            }
+        }
+        
+        alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     func changeImportant(task: Task, important: Bool, indexPath: IndexPath) {
         
         task.isImportant = important
@@ -176,8 +242,10 @@ class DLTaskListViewController: UIViewController {
         let task = Task()
         task.groupId = group?.id
         task.title = title
+        tableView.beginUpdates()
         unCompleteTasks.append(task)
         tableView.insertRows(at: [IndexPath(item: unCompleteTasks.count - 1, section: 0)], with: .automatic)
+        tableView.endUpdates()
         var paramters: [String: Any] = ["title": title]
         if let groupId = group?.id {
             paramters.updateValue(groupId, forKey: "groupId")
@@ -191,7 +259,6 @@ class DLTaskListViewController: UIViewController {
             }
         }
     }
-    
     
     func fetchData() {
         RSSessionManager.rs_request(RSRequestTask.get(groupId: group?.id)) { [weak self] (result) in
@@ -290,7 +357,11 @@ extension DLTaskListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         delete.backgroundColor = UIColor.red
         
-        return [delete]
+        let moveAction = UITableViewRowAction(style: .normal, title: "移动") { [unowned self] (action, indexPath) in
+            self.moveToOther(indexPath: indexPath)
+               }
+               moveAction.backgroundColor = UIColor.dl_blue_6CAAF2
+        return [delete, moveAction]
     }
 }
 

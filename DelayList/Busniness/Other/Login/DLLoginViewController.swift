@@ -35,7 +35,6 @@ class DLLoginViewController: UIViewController {
         
         line1Height.constant = 1 / kScale
         line2Height.constant = 1 / kScale
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,8 +85,6 @@ class DLLoginViewController: UIViewController {
     
     
     @IBAction func fetchVerificationCode() {
-        
-        
         guard let phone = phoneTextField.text else { return }
         if phone.isEmpty { return }
         

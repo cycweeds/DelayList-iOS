@@ -44,6 +44,11 @@ class DLTaskImortantListViewController: UIViewController {
         
         fetchDate()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
   
     func fetchDate() {
         RSSessionManager.rs_request(RSRequestTask.getAllImportant) { (result) in

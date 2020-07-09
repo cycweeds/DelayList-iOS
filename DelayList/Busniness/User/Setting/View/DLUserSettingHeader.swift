@@ -16,6 +16,7 @@ class DLUserSettingHeader: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        avatarImageView.backgroundColor = UIColor.white
         updateUser()
     }
     

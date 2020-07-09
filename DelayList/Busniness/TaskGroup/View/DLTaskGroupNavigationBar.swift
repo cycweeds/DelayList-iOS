@@ -15,6 +15,7 @@ class DLTaskGroupNavigationBar: UIView {
     
     var avatar: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.white
         return imageView
     }()
     

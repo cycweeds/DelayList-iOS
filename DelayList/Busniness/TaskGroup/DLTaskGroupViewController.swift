@@ -88,7 +88,7 @@ class DLTaskGroupViewController: UIViewController {
         
         fetchData()
         
-        NotificationCenter.default.addObserver(self, selector: "taskUpdate:", name: NSNotification.Name.Task.TaskUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "taskUpdate:", name: NSNotification.Name.Task.Update, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: "userUpdated", name: NSNotification.Name.User.Update, object: nil)
     }

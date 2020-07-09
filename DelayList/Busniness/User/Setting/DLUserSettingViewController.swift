@@ -9,6 +9,7 @@
 import UIKit
 import PhotosUI
 import WXImageCompress
+import MessageUI
 
 fileprivate enum DLUserSettingAction {
     case advanced
@@ -52,7 +53,7 @@ class DLUserSettingViewController: UIViewController {
         return .default
     }
     
-    private var actions: [[DLUserSettingAction]] = [[.advanced, .logout], [.about, .comment, .contactUs]]
+    private var actions: [[DLUserSettingAction]] = [[.logout], [.about, .comment, .contactUs]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +62,6 @@ class DLUserSettingViewController: UIViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-        
-        
-        
     }
     
     @objc func avatarTapped() {
@@ -93,11 +90,8 @@ extension DLUserSettingViewController: UIImagePickerControllerDelegate, UINaviga
                         self?.header.updateUser()
                     }
                 }
-               
             }
-            
         }
-        
         picker.dismiss(animated: true, completion: nil)
         
     }
@@ -135,7 +129,7 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
         case .about:
             cell.textLabel?.text = "关于"
         case .comment:
-            cell.textLabel?.text = "来评价"
+            cell.textLabel?.text = "评价"
         case .contactUs:
             cell.textLabel?.text = "联系我们"
         }
@@ -177,11 +171,36 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
             let vc = DLAboutViewController()
             navigationController?.pushViewController(vc)
         case .contactUs:
-            let contactUsVC = DLContactUsViewController()
-            navigationController?.pushViewController(contactUsVC)
+            // 暂时直接提示alert
+//            let contactUsVC = DLContactUsViewController()
+//            navigationController?.pushViewController(contactUsVC)
+            
+            guard let name = DLUserManager.shared.currentUser?.name else {
+                 return
+             }
+            
+             let email = "cycweeds@gmail.com"
+             if MFMailComposeViewController.canSendMail() {
+                 let mailVC = MFMailComposeViewController()
+                 mailVC.mailComposeDelegate = self
+                 mailVC.setToRecipients([email])
+                 mailVC.setSubject("来自用户\(name)的邮件")
+                 present(mailVC, animated: true, completion: nil)
+                 
+             } else {
+                        UIPasteboard.general.string = email
+                        showAlert(message: "欢迎您联系我们，您可以反馈使用中遇到的bug，以及提出产品的意见。邮箱 \(email) 已复制")
+             }
+            
         }
         
     
+    }
+}
+
+extension DLUserSettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -190,16 +209,12 @@ extension DLUserSettingViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if DLUserManager.shared.currentUser?.name != textField.text {
-            
             if textField.text!.count > 15 {
                 return
             }
-            
             DLUserManager.shared.updateCurrentUser(params: ["name": textField.text ?? ""]) { [weak self] in
                 self?.header.updateUser()
             }
-            
-            
         }
     }
 }

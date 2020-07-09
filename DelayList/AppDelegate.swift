@@ -136,6 +136,15 @@ extension AppDelegate: JPUSHRegisterDelegate {
                    JPUSHService.handleRemoteNotification(userInfo)
                 }
                completionHandler()
+        
+        
+        // 收到消息推送
+        if let type = userInfo["type"] as? String, type == "detail", let taskJSON = userInfo["task"] as? [AnyHashable: AnyHashable] {
+            let task = Task(json: JSON(taskJSON))
+            let detail = DLTaskDetailViewController(task: task)
+            (window?.rootViewController as? UINavigationController)?.pushViewController(detail)
+            
+        }
     }
     
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, openSettingsFor notification: UNNotification!) {

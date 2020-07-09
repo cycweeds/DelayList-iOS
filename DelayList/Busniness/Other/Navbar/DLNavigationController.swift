@@ -55,7 +55,19 @@ class DLNavigationController: UINavigationController {
     }
     
     override var childForStatusBarStyle: UIViewController? {
-        return topViewController
+        // 判断是否实现父类的preferStatusBarStyle方法    实现了走当前类的style   不然默认lightContent 的状态
+        if isMethodOverride(cls: topViewController?.classForCoder, name: #selector(getter: preferredStatusBarStyle)) {
+            return topViewController
+        } else {
+            return nil
+        }
+    }
+    
+    
+    private func isMethodOverride(cls:AnyClass?, name: Selector) -> Bool {
+        let classMethod = class_getInstanceMethod(cls, name)
+        let superClassMethod = class_getInstanceMethod(cls?.superclass(), name)
+        return classMethod != superClassMethod
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

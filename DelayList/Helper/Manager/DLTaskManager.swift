@@ -89,7 +89,7 @@ class DLTaskManager {
                 if groupId == nil {
                     self.inboxGroup.count += 1
                 }
-                NotificationCenter.default.post(name: NSNotification.Name.Task.TaskUpdate, object: nil, userInfo: ["task": task])
+                NotificationCenter.default.post(name: NSNotification.Name.Task.Update, object: nil, userInfo: ["task": task])
                 completed?()
             default:
                 break
@@ -117,8 +117,8 @@ class DLTaskManager {
     
     func updateTask(task: Task) {
         RSSessionManager.rs_request(RSRequestTask.update(task: task)) { (result) in
-            
+            NotificationCenter.default.post(name: NSNotification.Name.Task.Update, object: nil)
         }
     }
-    
+
 }
