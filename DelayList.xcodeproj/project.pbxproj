@@ -793,14 +793,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DelayList/DelayList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRUD2B3C45;
+				DEVELOPMENT_TEAM = 5M7W2B6924;
 				INFOPLIST_FILE = "$(SRCROOT)/DelayList/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mt.DelayList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengtao.delayList;
 				PRODUCT_NAME = DelayList;
 				SWIFT_OBJC_BRIDGING_HEADER = "DelayList/DelayList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -817,14 +817,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DelayList/DelayList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRUD2B3C45;
+				DEVELOPMENT_TEAM = 5M7W2B6924;
 				INFOPLIST_FILE = "$(SRCROOT)/DelayList/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mt.DelayList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mengtao.delayList;
 				PRODUCT_NAME = DelayList;
 				SWIFT_OBJC_BRIDGING_HEADER = "DelayList/DelayList-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

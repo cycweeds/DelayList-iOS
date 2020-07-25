@@ -18,7 +18,6 @@ class RSSessionManager: SessionManager {
         let manager = RSSessionManager(configuration: configuration)
         // 要开启监听才行
         manager.networkManager?.startListening()
-        
         return manager
     }()
     
@@ -40,24 +39,19 @@ class RSSessionManager: SessionManager {
     @discardableResult
     public static func rs_request(_ request: RSHTTPRequestProtocol, queue: DispatchQueue? = nil, options: RSHttpOptions = [], completed: ((_ result: RSResult<RSResponse>) -> ())?) -> DataRequest? {
         
-        let status = RSSessionManager.share.networkManager?.networkReachabilityStatus
+           let status = RSSessionManager.share.networkManager?.networkReachabilityStatus
         // 网络不触达 直接返回
         if status == .notReachable {
             let error = RSHttpError.networkError
-    
-            
             completed?(RSResult.error(error))
             return nil
         }
         
-        
         var header: [String: String]?
             
         if let token = DLUserManager.shared.token {
-          header  = ["Authorization": "Bearer " + token]
+            header  = ["Authorization": "Bearer " + token]
         }
-        
-    
         
         let request = RSSessionManager.share.request(request.url, method: request.method, parameters: request.parameters, encoding: request.encoding, headers: header).rs_response(queue: queue, completed: completed)
         request.rsHttpOptions = options
@@ -90,11 +84,11 @@ extension DataRequest {
         
         responseJSON(queue: queue) { (response) in
             
-            if !AppConstants.isRelease() {
+//            if !AppConstants.isRelease() {
                 print("==========================")
                 print(response.customerDescription)
                 print("==========================")
-            }
+//            }
             
             
             if response.response?.statusCode == 500 {

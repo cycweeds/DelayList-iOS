@@ -66,7 +66,6 @@ enum RSRequestTask: RSHTTPRequestProtocol {
         case .add(let params):
             return params
         case .update(let task):
-            
             var params: [String: Any] = ["important": task.isImportant, "title": task.title, "complete": task.isComplete]
             params.updateValue(task.note, forKey: "note")
             

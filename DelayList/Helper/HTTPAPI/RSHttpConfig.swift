@@ -14,7 +14,7 @@ public var kHttpBaseURL: String {
     case .debug:
         return "http://localhost:8080"
     case .release:
-        return "https://delaylist.cn"
+        return "http://mengtaotech.com:8081"
     }
 }
 

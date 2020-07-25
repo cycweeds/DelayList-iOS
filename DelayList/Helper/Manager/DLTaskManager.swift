@@ -55,7 +55,6 @@ class DLTaskManager {
                 fallthrough
             case .error:
                 break
-                //                self.fetchAll(completed: completed)
             }
         }
     }

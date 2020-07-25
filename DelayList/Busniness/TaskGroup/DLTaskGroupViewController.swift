@@ -68,7 +68,7 @@ class DLTaskGroupViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(groupNavigationBar)
-        groupNavigationBar.updateUserInfo()
+        
         groupNavigationBar.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalToSuperview()
@@ -96,6 +96,8 @@ class DLTaskGroupViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        groupNavigationBar.updateUserInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,7 +126,7 @@ class DLTaskGroupViewController: UIViewController {
             return
         }
         if task.groupId == nil {
-            let zeroIndexPath = IndexPath(item: 1, section: 0)
+            let zeroIndexPath = IndexPath(row: 0, section: 0)
             tableView.reloadRows(at: [zeroIndexPath], with: .none)
             tableView.selectRow(at: zeroIndexPath, animated: true, scrollPosition: .none)
             
