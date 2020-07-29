@@ -26,6 +26,12 @@ class DLTaskAddViewController: UIViewController {
         finishedButton.isEnabled = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textField.becomeFirstResponder()
+    }
+    
     
     func addTask() {
         guard let title = textField.text else {

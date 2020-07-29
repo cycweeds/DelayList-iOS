@@ -27,7 +27,7 @@ class DLTaskNoteViewController: UIViewController {
     
     var note: String = ""
     
-    let noteColor = UIColor.dl_orange_E4E20A
+    let noteColor = UIColor.dl_orange_FFFE8B
     
     override func viewDidLoad() {
         super.viewDidLoad()

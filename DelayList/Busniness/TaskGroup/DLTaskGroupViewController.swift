@@ -162,7 +162,7 @@ class DLTaskGroupViewController: UIViewController {
     }
     
     @objc func addGroup() {
-        let alertVC = UIAlertController(title: "列表创建", message: nil, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "新建列表", message: nil, preferredStyle: .alert)
         alertVC.addTextField { (tf) in
             
         }
@@ -274,17 +274,43 @@ extension DLTaskGroupViewController: UITableViewDelegate, UITableViewDataSource 
         return indexPath.section != 0
     }
     
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if indexPath.section == 0 {
+            return nil
+        }
+        let deleteAction = UITableViewRowAction(style: .normal, title: "删除") { [unowned self] (action, indexPath) in
+            let group: TaskGroup = self.getTask(indexPath: indexPath)
+               
+               DLTaskManager.shared.deleteGroup(group) { [weak self] in
+                   guard let strongSelf = self else { return }
+                   strongSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
+               }
+        }
+        deleteAction.backgroundColor = UIColor.red
+        
+        let renameAction = UITableViewRowAction(style: .normal, title: "重命名") { [unowned self] (action, indexPath) in
+        
+            let alertVC = UIAlertController(title: "重命名", message: nil, preferredStyle: .alert)
+            alertVC.addTextField(configurationHandler: nil)
+            
+            alertVC.addAction(UIAlertAction(title: "确定", style: .default, handler: { [unowned self] _ in
+                guard let name = alertVC.textFields?.first?.text else { return }
+                let group: TaskGroup = self.getTask(indexPath: indexPath)
+                       
+                       DLTaskManager.shared.updateTaskGroupName(name: name, groupId: group.id!) { [weak self] success in
+                        if success {
+                            group.title = name
+                        }
+                           self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                       }
+            }))
+            alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
+        renameAction.backgroundColor = UIColor.dl_blue_6CAAF2
+        
+        return [deleteAction, renameAction]
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let group: TaskGroup = getTask(indexPath: indexPath)
-        
-        DLTaskManager.shared.deleteGroup(group) { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-        
-    }
 }

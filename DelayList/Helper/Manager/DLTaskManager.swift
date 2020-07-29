@@ -97,6 +97,15 @@ class DLTaskManager {
         }
     }
     
+    func updateTaskGroupName(name: String, groupId: Int, cpmpleted: ((Bool) -> ())?) {
+        
+        RSSessionManager.rs_request(RSRequestTaskGroup.update(title: name, groupId: groupId)) { (result) in
+            cpmpleted?(result.isSuccess)
+            
+            
+        }
+    }
+    
     
     func addTaskGroup(title: String, completed: (() -> ())?) {
         RSSessionManager.rs_request(RSRequestTaskGroup.add(title: title)) { (result) in

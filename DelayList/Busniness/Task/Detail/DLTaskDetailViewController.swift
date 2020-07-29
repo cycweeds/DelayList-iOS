@@ -91,7 +91,7 @@ class DLTaskDetailViewController: UIViewController {
                     if let groupId = group.id {
                         RSSessionManager.rs_request(RSRequestTask.moveToGroup(taskId: self.task.id, groupId: groupId)) { [weak self] (result) in
                             switch result {
-                            case .success(let response):
+                            case .success:
                                 self?.task.groupId = groupId
                                 NotificationCenter.default.post(name: NSNotification.Name.Task.Update, object: nil)
                                 break
