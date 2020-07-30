@@ -28,17 +28,41 @@ class DLAboutViewController: UIViewController {
     
     lazy var versionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Version   1.0"
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                label.text = "Version  \(version)"
+        }
+        
         return label
     }()
     
-    var bottomLabel1: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.dl_black_999999
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.text = "《用户协议》和《隐私协议》"
-        return label
-    }()
+     lazy var bottomLabel1: YYLabel = {
+            let label = YYLabel()
+            
+            let message = "《用户协议》和《隐私政策》"
+    //        label.textColor = UIColor.dl_gray_BBBBBB
+            
+            let userRange = (message as NSString).range(of: "用户协议")
+            let privacyRange = (message as NSString).range(of: "隐私政策")
+            let attStr = NSMutableAttributedString(string: message, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.dl_black_999999])
+            
+            
+            
+            
+            attStr.yy_setTextHighlight(userRange, color: UIColor.dl_blue_6CAAF2, backgroundColor: nil, userInfo: nil, tapAction: { [unowned self]  (view, str, range, rect) in
+                self.viewUserProtocol()
+                
+            }, longPressAction: nil)
+            
+    //
+            attStr.yy_setTextHighlight(privacyRange, color: UIColor.dl_blue_6CAAF2, backgroundColor: nil, userInfo: nil, tapAction: { [unowned self] (view, str, range, rect) in
+                self.viewPrivacyAgreement()
+                
+            }, longPressAction: nil)
+            label.attributedText = attStr
+            
+            
+            return label
+        }()
     
     
     var bottomLabel2: UILabel = {
@@ -78,6 +102,19 @@ class DLAboutViewController: UIViewController {
                  make.centerX.equalToSuperview()
                  make.bottom.equalTo(bottomLabel2.snp.top).offset(-5)
              }
+    }
+    
+    
+    func viewUserProtocol() {
+        let webVC = WebViewController(url: URL(string: DLWebUrl.userProlicy)!)
+        navigationController?.pushViewController(webVC)
+        
+    }
+    
+    func viewPrivacyAgreement() {
+        
+        let webVC = WebViewController(url: URL(string: DLWebUrl.privateProlicy)!)
+        navigationController?.pushViewController(webVC)
     }
     
 }

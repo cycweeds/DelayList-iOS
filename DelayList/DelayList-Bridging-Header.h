@@ -3,4 +3,6 @@
 //
 
 
-#include <JPush/JPUSHService.h>
+#import <JPush/JPUSHService.h>
+
+#import <YYText/YYText.h>

@@ -22,16 +22,53 @@ class DLLoginViewController: UIViewController {
     
     @IBOutlet weak var indicatiorView: UIActivityIndicatorView!
     
+    // 用下面的代替
     @IBOutlet weak var bottomTipLabel: UILabel!
-    // 倒计时 60秒
-    var countDownTimeSeconds = 10
     
-    var countDownTimer: Timer?
+    lazy var bottomLabel: YYLabel = {
+        let label = YYLabel()
+        
+        let message = "登录即表示您已阅读并同意《用户协议》、《隐私政策》"
+//        label.textColor = UIColor.dl_gray_BBBBBB
+        
+        let userRange = (message as NSString).range(of: "用户协议")
+        let privacyRange = (message as NSString).range(of: "隐私政策")
+        let attStr = NSMutableAttributedString(string: message, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10, weight: .semibold), NSAttributedString.Key.foregroundColor: UIColor.dl_gray_BBBBBB])
+        
+        
+        
+        
+        attStr.yy_setTextHighlight(userRange, color: UIColor.dl_blue_6CAAF2, backgroundColor: nil, userInfo: nil, tapAction: { [unowned self]  (view, str, range, rect) in
+            self.viewUserProtocol()
+            
+        }, longPressAction: nil)
+        
+//        
+        attStr.yy_setTextHighlight(privacyRange, color: UIColor.dl_blue_6CAAF2, backgroundColor: nil, userInfo: nil, tapAction: { [unowned self] (view, str, range, rect) in
+            self.viewPrivacyAgreement()
+            
+        }, longPressAction: nil)
+        label.attributedText = attStr
+        
+        
+        return label
+    }()
+    
+    // 倒计时 60秒
+    private var countDownTimeSeconds = 10
+    
+    private var countDownTimer: Timer?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(bottomLabel)
+        bottomLabel.snp.makeConstraints { (make) in
+            make.center.equalTo(bottomTipLabel)
+        }
+        bottomTipLabel.isHidden = true
         
         line1Height.constant = 1 / kScale
         line2Height.constant = 1 / kScale
@@ -121,11 +158,17 @@ class DLLoginViewController: UIViewController {
     
     
     func viewUserProtocol() {
+        let webVC = WebViewController(url: URL(string: DLWebUrl.userProlicy)!)
+        let nav = DLNavigationController(rootViewController: webVC)
+        present(nav, animated: true, completion: nil)
         
     }
     
     func viewPrivacyAgreement() {
         
+        let webVC = WebViewController(url: URL(string: DLWebUrl.privateProlicy)!)
+        let nav = DLNavigationController(rootViewController: webVC)
+        present(nav, animated: true, completion: nil)
     }
     
     

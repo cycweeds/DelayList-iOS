@@ -43,6 +43,8 @@ pod 'Alamofire'
 
 pod 'JPush'
 
+pod 'YYText'
+
 
 pod 'WXImageCompress'
 

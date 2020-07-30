@@ -25,7 +25,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="b3K-NC-e2Q"/>
                     </constraints>
-                    <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="30"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                 </textField>

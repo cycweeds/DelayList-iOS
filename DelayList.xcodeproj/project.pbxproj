@@ -68,6 +68,8 @@
 		09DC869E23FE878A0013B012 /* DLTaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC869D23FE878A0013B012 /* DLTaskDetailViewController.swift */; };
 		09F50B4123576D4C006201E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F50B4023576D4C006201E0 /* AppDelegate.swift */; };
 		09F50B4823576D4C006201E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F50B4723576D4C006201E0 /* Assets.xcassets */; };
+		09FBD34D24D2BD7F00EBA4B3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBD34C24D2BD7F00EBA4B3 /* WebViewController.swift */; };
+		09FBD34F24D2BDD200EBA4B3 /* WebProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBD34E24D2BDD200EBA4B3 /* WebProgressView.swift */; };
 		59BFA9CC605C3FBCF20A775A /* Pods_DelayList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD9932313F8A41C901CB38 /* Pods_DelayList.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +140,8 @@
 		09F50B4023576D4C006201E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09F50B4723576D4C006201E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09F50B4C23576D4C006201E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09FBD34C24D2BD7F00EBA4B3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		09FBD34E24D2BDD200EBA4B3 /* WebProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebProgressView.swift; sourceTree = "<group>"; };
 		5D8760ADD06D3283CF5238A2 /* Pods-LazyList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyList.release.xcconfig"; path = "Target Support Files/Pods-LazyList/Pods-LazyList.release.xcconfig"; sourceTree = "<group>"; };
 		9178A5803C175A378E26B7C7 /* Pods-LazyList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazyList.debug.xcconfig"; path = "Target Support Files/Pods-LazyList/Pods-LazyList.debug.xcconfig"; sourceTree = "<group>"; };
 		BE92B67FBD17AC4CE427F673 /* Pods-DelayList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DelayList.debug.xcconfig"; path = "Target Support Files/Pods-DelayList/Pods-DelayList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 		0990134F2357803500285128 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				09FBD34B24D2BD5E00EBA4B3 /* WebView */,
 				09532CCD23BDCE7400AE0E73 /* Login */,
 				099013532357808600285128 /* Navbar */,
 				099013522357808100285128 /* Tabbar */,
@@ -467,6 +472,15 @@
 				09C67DDB2403B06600A76DAB /* DelayList-Bridging-Header.h */,
 			);
 			path = DelayList;
+			sourceTree = "<group>";
+		};
+		09FBD34B24D2BD5E00EBA4B3 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				09FBD34C24D2BD7F00EBA4B3 /* WebViewController.swift */,
+				09FBD34E24D2BDD200EBA4B3 /* WebProgressView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		69F8757D6B527B12E104D88E /* Pods */ = {
@@ -630,6 +644,7 @@
 				0954083D241397DB0056EB1D /* DLTaskImortantListViewController.swift in Sources */,
 				095E0AFD2424CB6900B3BC87 /* DLUserSettingCell.swift in Sources */,
 				09C67DE22404F34A00A76DAB /* RSTextView.swift in Sources */,
+				09FBD34F24D2BDD200EBA4B3 /* WebProgressView.swift in Sources */,
 				09532CD823BDFAFA00AE0E73 /* UIKit+Extension.swift in Sources */,
 				09F50B4123576D4C006201E0 /* AppDelegate.swift in Sources */,
 				09C67DE7240526FD00A76DAB /* DLTaskTimeSelectViewController.swift in Sources */,
@@ -641,6 +656,7 @@
 				095E0AF92424B46600B3BC87 /* DLUserSettingHeader.swift in Sources */,
 				09804FAB23FCFBA200559862 /* DLTaskGroupViewController.swift in Sources */,
 				09A17F1D23FD373A00EE199B /* DLTaskAddViewController.swift in Sources */,
+				09FBD34D24D2BD7F00EBA4B3 /* WebViewController.swift in Sources */,
 				09804FBA23FCFF4900559862 /* RSBaseRequest.swift in Sources */,
 				0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */,
 				09804FB823FCFED200559862 /* TaskGroup.swift in Sources */,

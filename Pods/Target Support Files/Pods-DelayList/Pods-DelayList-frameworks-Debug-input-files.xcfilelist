@@ -11,3 +11,4 @@ ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/WXImageCompress/WXImageCompress.framework
 ${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework
+${BUILT_PRODUCTS_DIR}/YYText/YYText.framework

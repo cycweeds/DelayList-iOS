@@ -36,3 +36,5 @@ public var kHttpWebURL: String {
         return "https://h5.tagapp.cn"
     }
 }
+
+

@@ -18,3 +18,8 @@ extension UIViewController {
 }
 
 
+// TODO: 替换为真实数据就完事
+struct DLWebUrl {
+    static let userProlicy = "http://www.baidu.com"
+    static let privateProlicy = "http://www.taobao.com"
+}

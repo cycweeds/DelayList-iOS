@@ -25,6 +25,7 @@ PODS:
     - XCGLogger/Core (= 7.0.0)
   - XCGLogger/Core (7.0.0):
     - ObjcExceptionBridging
+  - YYText (1.0.7)
 
 DEPENDENCIES:
   - Alamofire
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - WXImageCompress
   - XCGLogger
+  - YYText
 
 SPEC REPOS:
   https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
@@ -63,6 +65,7 @@ SPEC REPOS:
     - JPush
     - Kingfisher
     - WXImageCompress
+    - YYText
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -82,7 +85,8 @@ SPEC CHECKSUMS:
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   WXImageCompress: 86c7a4d028c7fc9c74181468c318a9ec688fcdac
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 1f99e218a0ec1ab47207325064fc2e437340e872
+PODFILE CHECKSUM: 527db8012c5371cd13839c57e518fe5a864abbb8
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

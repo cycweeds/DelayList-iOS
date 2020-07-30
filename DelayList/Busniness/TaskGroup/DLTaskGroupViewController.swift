@@ -126,11 +126,14 @@ class DLTaskGroupViewController: UIViewController {
             return
         }
         if task.groupId == nil {
+            // 代表添加到暂存箱了
             let zeroIndexPath = IndexPath(row: 0, section: 0)
             tableView.reloadRows(at: [zeroIndexPath], with: .none)
             tableView.selectRow(at: zeroIndexPath, animated: true, scrollPosition: .none)
             
             DispatchQueue.main.cwl.delay(second: 0.5) {
+                let taskVC = DLTaskDetailViewController(task: task)
+                self.navigationController?.pushViewController(taskVC)
                 self.tableView.deselectRow(at: zeroIndexPath, animated: true)
             }
         } else {
