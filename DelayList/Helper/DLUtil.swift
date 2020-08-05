@@ -18,8 +18,9 @@ extension UIViewController {
 }
 
 
-// TODO: 替换为真实数据就完事
+
 struct DLWebUrl {
-    static let userProlicy = "http://www.baidu.com"
-    static let privateProlicy = "http://www.taobao.com"
+    static let userProlicy: String = kHttpBaseURL.replacingOccurrences(of: "8090", with: "8080").appending("/terms-of-use.html")
+    static let privatcy: String = kHttpBaseURL.replacingOccurrences(of: "8090", with: "8080").appending("/privacy.html")
+        
 }

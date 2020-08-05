@@ -12,29 +12,8 @@ public var kHttpBaseURL: String {
     
     switch AppConstants.BuildChannel {
     case .debug:
-        return "http://localhost:8080"
+        return "http://localhost:8090"
     case .release:
-        return "http://mengtaotech.com:8081"
+        return "http://mengtaotech.com:8090"
     }
 }
-
-public var kHttpFileURL: String {
-    
-    switch AppConstants.BuildChannel {
-    case .debug:
-        return "http://tag-test.oss-cn-shanghai.aliyuncs.com/"
-    case .release:
-        return "https://file.tagapp.cn/"
-    }
-}
-
-public var kHttpWebURL: String {
-    switch AppConstants.BuildChannel {
-    case .debug:
-        return "http://tag-dev-1254361839.cos-website.ap-shanghai.myqcloud.com"
-    case .release:
-        return "https://h5.tagapp.cn"
-    }
-}
-
-

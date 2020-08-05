@@ -159,8 +159,7 @@ extension DLUserSettingViewController: UITableViewDelegate, UITableViewDataSourc
         case .logout:
             DLUserManager.shared.logout()
         case .comment:
-            // TODO: 苹果id 替换评价
-            if let url = URL(string: "itms-apps://itunes.apple.com/app/id1455435248?action=write-review") {
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/id1526159586?action=write-review") {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }

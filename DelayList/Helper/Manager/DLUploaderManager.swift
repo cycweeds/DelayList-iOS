@@ -17,13 +17,8 @@ class DLUploaderManager {
     
     lazy var client: OSSClient = {
         
-        let url: String
+        let url = "\(kHttpBaseURL)/aliyun/token"
         
-        if AppConstants.isDebug() {
-            url = "http://127.0.0.1:7080/aliyun/token"
-        } else {
-            url = "\(kHttpBaseURL.replacingOccurrences(of: "8081", with: "7080"))/aliyun/token"
-        }
         let provider = OSSAuthCredentialProvider(authServerUrl: url){ (data) -> Data? in
             let str =  String(data: data, encoding: .utf8)
             return data
@@ -39,7 +34,7 @@ class DLUploaderManager {
     static let shared: DLUploaderManager = DLUploaderManager()
     
     init() {
-         
+        
     }
     
     func upload(data: Data, completed: ((String?) -> ())?) {
@@ -57,6 +52,6 @@ class DLUploaderManager {
             completed?(nil)
             return nil
         })
-     
+        
     }
 }

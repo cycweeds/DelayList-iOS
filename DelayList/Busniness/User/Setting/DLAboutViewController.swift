@@ -113,7 +113,7 @@ class DLAboutViewController: UIViewController {
     
     func viewPrivacyAgreement() {
         
-        let webVC = WebViewController(url: URL(string: DLWebUrl.privateProlicy)!)
+        let webVC = WebViewController(url: URL(string: DLWebUrl.privatcy)!)
         navigationController?.pushViewController(webVC)
     }
     

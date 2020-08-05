@@ -55,7 +55,9 @@ class DLLoginViewController: UIViewController {
     }()
     
     // 倒计时 60秒
-    private var countDownTimeSeconds = 10
+    lazy private var currentCountDownTimeSeconds = countDownTimeSeconds
+    
+    private let countDownTimeSeconds = 60
     
     private var countDownTimer: Timer?
     
@@ -82,15 +84,15 @@ class DLLoginViewController: UIViewController {
     
     @objc func startCountDown() {
         
-        if countDownTimeSeconds == 0 {
-            countDownTimeSeconds = 10
+        if currentCountDownTimeSeconds == 0 {
+            currentCountDownTimeSeconds = countDownTimeSeconds
             verificationCodeButton.isEnabled = true
             countDownTimer?.invalidate()
             countDownTimer = nil
             return
         }
-        verificationCodeButton.setTitle("\(countDownTimeSeconds)s", for: UIControl.State.disabled)
-        countDownTimeSeconds -= 1
+        verificationCodeButton.setTitle("\(currentCountDownTimeSeconds)s", for: UIControl.State.disabled)
+        currentCountDownTimeSeconds -= 1
     }
 
 
@@ -99,6 +101,10 @@ class DLLoginViewController: UIViewController {
         
         guard let code = verificationCodeInputTextField.text else { return }
         guard let phone = phoneTextField.text else { return }
+        if code.isEmpty || phone.isEmpty {
+             return
+        }
+        
         loginButton.isEnabled = false
         indicatiorView.startAnimating()
         
@@ -166,7 +172,7 @@ class DLLoginViewController: UIViewController {
     
     func viewPrivacyAgreement() {
         
-        let webVC = WebViewController(url: URL(string: DLWebUrl.privateProlicy)!)
+        let webVC = WebViewController(url: URL(string: DLWebUrl.privatcy)!)
         let nav = DLNavigationController(rootViewController: webVC)
         present(nav, animated: true, completion: nil)
     }

@@ -46,7 +46,6 @@
 		0983FA6F24B66974003DD93A /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983FA6E24B66974003DD93A /* Notification+Extension.swift */; };
 		09901356235780B100285128 /* DLTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901355235780B100285128 /* DLTabbarViewController.swift */; };
 		0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0990135D2357810E00285128 /* DLCircleHomeViewController.swift */; };
-		09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901360235782B400285128 /* DLTODOListHomeViewController.swift */; };
 		09901363235782F600285128 /* DLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09901362235782F600285128 /* DLNavigationController.swift */; };
 		09A17F1D23FD373A00EE199B /* DLTaskAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A17F1B23FD373A00EE199B /* DLTaskAddViewController.swift */; };
 		09A17F1E23FD373A00EE199B /* DLTaskAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A17F1C23FD373A00EE199B /* DLTaskAddViewController.xib */; };
@@ -114,7 +113,6 @@
 		0983FA6E24B66974003DD93A /* Notification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		09901355235780B100285128 /* DLTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTabbarViewController.swift; sourceTree = "<group>"; };
 		0990135D2357810E00285128 /* DLCircleHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLCircleHomeViewController.swift; sourceTree = "<group>"; };
-		09901360235782B400285128 /* DLTODOListHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTODOListHomeViewController.swift; sourceTree = "<group>"; };
 		09901362235782F600285128 /* DLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLNavigationController.swift; sourceTree = "<group>"; };
 		09A17F1B23FD373A00EE199B /* DLTaskAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTaskAddViewController.swift; sourceTree = "<group>"; };
 		09A17F1C23FD373A00EE199B /* DLTaskAddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DLTaskAddViewController.xib; sourceTree = "<group>"; };
@@ -283,7 +281,6 @@
 				09804FC423FD2BF400559862 /* Task */,
 				09804FA923FCFB7600559862 /* TaskGroup */,
 				0990135A235780D200285128 /* Circle */,
-				099013512357807200285128 /* TodoList */,
 				099013502357806000285128 /* User */,
 				0990134F2357803500285128 /* Other */,
 			);
@@ -338,14 +335,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		099013512357807200285128 /* TodoList */ = {
-			isa = PBXGroup;
-			children = (
-				0990135F2357828500285128 /* Home */,
-			);
-			path = TodoList;
-			sourceTree = "<group>";
-		};
 		099013522357808100285128 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,14 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				0990135D2357810E00285128 /* DLCircleHomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		0990135F2357828500285128 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				09901360235782B400285128 /* DLTODOListHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -660,7 +641,6 @@
 				09804FBA23FCFF4900559862 /* RSBaseRequest.swift in Sources */,
 				0990135E2357810E00285128 /* DLCircleHomeViewController.swift in Sources */,
 				09804FB823FCFED200559862 /* TaskGroup.swift in Sources */,
-				09901361235782B400285128 /* DLTODOListHomeViewController.swift in Sources */,
 				095E0B01243C6BFB00B3BC87 /* DLContactUsViewController.swift in Sources */,
 				09804F8823FA762100559862 /* RSResult.swift in Sources */,
 				09804FB623FCFEAC00559862 /* Task.swift in Sources */,

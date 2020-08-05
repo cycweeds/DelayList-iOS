@@ -70,7 +70,12 @@ class WebViewController: UIViewController {
             
         } else {
             if let nav = self.navigationController {
-                nav.popViewController(animated: true)
+                if nav.topViewController == self {
+                    dismiss(animated: true, completion: nil)
+                } else {
+                    nav.popViewController(animated: true)
+                }
+                
             } else {
                 dismiss(animated: true, completion: nil)
             }
@@ -135,7 +140,7 @@ class WebViewController: UIViewController {
     }
     
     deinit {
-        print("WebViewController deinit")
+        
     }
     
     // MARK: - Actions
@@ -198,7 +203,7 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("webView didFinish")
+        
 //        self.webView.isNetworkError = false
     }
     

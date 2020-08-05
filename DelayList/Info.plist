@@ -32,7 +32,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>请允许访问相册，用于上传头像</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
